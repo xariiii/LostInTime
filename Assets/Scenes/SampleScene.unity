@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 1056369135}
   - component: {fileID: 1056369136}
   - component: {fileID: 1056369137}
+  - component: {fileID: 1056369138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -715,6 +716,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   FPController: {fileID: 1056369136}
+--- !u!114 &1056369138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056369132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2921885a0b5766d40b081403d98f0e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction
 --- !u!1 &1240736602
 GameObject:
   m_ObjectHideFlags: 0
