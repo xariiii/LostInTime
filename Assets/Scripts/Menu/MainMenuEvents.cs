@@ -17,6 +17,8 @@ public class MainMenuEvents : MonoBehaviour
     private UnityEngine.UIElements.Button _goBackButton;
     private UnityEngine.UIElements.Button _saveSettingsButton;
     private UnityEngine.UIElements.DropdownField _qualityDropdown;
+    private UnityEngine.UIElements.DropdownField _resolutionDropdown;
+    private UnityEngine.UIElements.Slider _volumeSlider;
 
     public GameObject playerPrefab;
     public VisualElement MainMenuVisual;
@@ -40,17 +42,49 @@ public class MainMenuEvents : MonoBehaviour
         // Getting the settings
 
         DropdownField _qualityDropdown = _document.rootVisualElement.Q<DropdownField>("QualityDropdown");
+        DropdownField _resolutionDropdown = _document.rootVisualElement.Q<DropdownField>("ResolutionDropdown");
+        Slider _volumeSlider = _document.rootVisualElement.Q<Slider>("VolumeSlider");
 
-        List<string> options = new List<string> { "Niska", "Średnia", "Wysoka" };
-    _qualityDropdown.choices = options;
-    _qualityDropdown.value = options[1]; // domyślnie "Średnia"
+        List<string> QualityOptions = new List<string> { "Niska", "Średnia", "Wysoka" };
+        _qualityDropdown.choices = QualityOptions;
+        _qualityDropdown.value = QualityOptions[1]; // medium set as default
 
-    // Obsługa zmiany
-    _qualityDropdown.RegisterValueChangedCallback(evt =>
-    {
-        Debug.Log("Wybrano jakość: " + evt.newValue);
-        QualitySettings.SetQualityLevel(options.IndexOf(evt.newValue));
-    });
+        List<string> ResolutionOptions = new List<string> { "2560x1440", "1920x1080", "1600x900", "1366x768", "1280x720" };
+
+
+        _resolutionDropdown.choices = ResolutionOptions;
+        _resolutionDropdown.value = ResolutionOptions[1]; // 1920 x 1080 set as default
+
+        _qualityDropdown.RegisterValueChangedCallback(evt =>
+        {
+            Debug.Log("Wybrano jakość: " + evt.newValue);
+            QualitySettings.SetQualityLevel(QualityOptions.IndexOf(evt.newValue));
+        });
+
+        _resolutionDropdown.RegisterValueChangedCallback(evt =>
+        {
+            Debug.Log("Wybrano rozdzielczosc: " + evt.newValue);
+
+            string[] resParts = evt.newValue.Split('x');
+
+            if (resParts.Length == 2 &&
+                int.TryParse(resParts[0], out int width) &&
+                int.TryParse(resParts[1], out int height))
+            {
+                UnityEngine.Screen.SetResolution(width, height, FullScreenMode.Windowed);
+            }
+            else
+            {
+                Debug.LogWarning("Nieprawidłowy format rozdzielczości: " + evt.newValue);
+            }
+        });
+        
+        _volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            Debug.Log("Ustawiono głośność: " + evt.newValue);
+            AudioListener.volume = evt.newValue / 100f;
+        });
+
 
 
         // Registering button clicks
