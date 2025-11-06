@@ -12,8 +12,8 @@
         <ui:VisualElement name="Settings" style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 9px; padding-right: 9px; padding-bottom: 9px; padding-left: 9px; align-self: center; justify-content: center;">
             <ui:DropdownField label="JAKOŚĆ GRAFIKI" name="QualityDropdown" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
             <ui:DropdownField label="ROZDZIELCZOŚĆ" name="ResolutionDropdown" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
-            <ui:SliderInt label="MUZYKA&#10;" value="42" high-value="100" name="MusicSlider" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
-            <ui:Button text="ZAPISZ" name="SaveButton" class="button" style="top: 0; bottom: 0; justify-content: center; align-items: flex-start; flex-direction: column; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
+            <ui:SliderInt label="MUZYKA&#10;" value="42" high-value="100" name="VolumeSlider" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
         </ui:VisualElement>
+        <ui:Button text="ZAPISZ" name="SaveButton" class="button" style="top: 0; bottom: 0; justify-content: center; align-items: flex-start; flex-direction: column; margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
     </ui:VisualElement>
 </ui:UXML>
