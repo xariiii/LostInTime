@@ -20,6 +20,6 @@
         <ui:Label text="Gra zatrzymana" name="Header" class="header" />
         <ui:Button text="Wroc do rozgrywki&#10;" name="ResumeButton" class="button" />
         <ui:Button text="Ustawienia&#10;" name="PauseSettingsButton" class="button" />
-        <ui:Button text="Wyjscie&#10;" name="PauseQuitButton" class="button" />
+        <ui:Button text="Wyjscie do menu&#10;" name="PauseQuitButton" class="button" />
     </ui:VisualElement>
 </ui:UXML>

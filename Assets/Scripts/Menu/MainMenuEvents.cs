@@ -103,7 +103,7 @@ public class MainMenuEvents : MonoBehaviour
         _saveSettingsButton?.RegisterCallback<ClickEvent>(OnSaveSettingsClick);
 
         _pauseSettingsButton?.RegisterCallback<ClickEvent>(OnPauseSettingsClick);
-        _pauseQuitButton?.RegisterCallback<ClickEvent>(OnQuitGameClick);
+        _pauseQuitButton?.RegisterCallback<ClickEvent>(OnGoToMainMenuClick);
         _resumeButton?.RegisterCallback<ClickEvent>(OnResumeClick);
 
         DontDestroyOnLoad(gameObject);
@@ -123,21 +123,31 @@ public class MainMenuEvents : MonoBehaviour
         }
     }
 
-    private void PauseGame() 
+    private void PauseGame()
     {
         Time.timeScale = 0f;
         isPaused = true;
         ShowPanel(PauseMenuPanel);
         HidePanel(MainMenuVisual);
         HidePanel(SettingsVisual);
+
+        var controller = FindObjectOfType<Artemis.FPController>();
+        if (controller != null)
+            controller.PauseController();
     }
+
 
     private void ResumeGame()
     {
         Time.timeScale = 1f;
         isPaused = false;
         HidePanel(PauseMenuPanel);
+
+        var controller = FindObjectOfType<Artemis.FPController>();
+        if (controller != null)
+            controller.ResumeController();
     }
+
 
     private void OnResumeClick(ClickEvent evt)
     {
@@ -185,13 +195,20 @@ public class MainMenuEvents : MonoBehaviour
     private void OnPlayGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Start Button");
-        
+
         Time.timeScale = 1f;
         isPaused = false;
         HidePanel(PauseMenuPanel);
 
         SceneManager.LoadScene("playerScene");
-        }
+    }
+
+    private void OnGoToMainMenuClick(ClickEvent evt)
+    {
+        ShowPanel(MainMenuVisual);
+        HidePanel(SettingsVisual);
+        HidePanel(PauseMenuPanel);
+    }
 
     private void OnQuitGameClick(ClickEvent evt)
     {
@@ -222,6 +239,9 @@ public class MainMenuEvents : MonoBehaviour
                 Instantiate(playerPrefab);
                 Debug.Log("Player instantiated after scene load.");
             }
+            HidePanel(MainMenuVisual);
+            HidePanel(SettingsVisual);
+            HidePanel(PauseMenuPanel);
         }
     }
 
