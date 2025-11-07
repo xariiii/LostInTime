@@ -58,9 +58,10 @@ public class MainMenuEvents : MonoBehaviour
         _resolutionDropdown = SettingsVisual.Q<DropdownField>("ResolutionDropdown");
         _volumeSlider = SettingsVisual.Q<UnityEngine.UIElements.SliderInt>("VolumeSlider");
 
+        // Settings
         List<string> QualityOptions = new List<string> { "Niska", "Średnia", "Wysoka" };
         _qualityDropdown.choices = QualityOptions;
-        _qualityDropdown.value = QualityOptions[1]; // medium set as default
+        _qualityDropdown.value = QualityOptions[1]; // Medium set as default
 
         List<string> ResolutionOptions = new List<string> { "2560x1440", "1920x1080", "1600x900", "1366x768", "1280x720" };
         _resolutionDropdown.choices = ResolutionOptions;
@@ -111,7 +112,7 @@ public class MainMenuEvents : MonoBehaviour
         StartCoroutine(DelayedLoadPrefs());
     }
 
-    private void Update()
+    private void Update() 
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -122,7 +123,7 @@ public class MainMenuEvents : MonoBehaviour
         }
     }
 
-    private void PauseGame()
+    private void PauseGame() 
     {
         Time.timeScale = 0f;
         isPaused = true;
@@ -184,8 +185,13 @@ public class MainMenuEvents : MonoBehaviour
     private void OnPlayGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Start Button");
+        
+        Time.timeScale = 1f;
+        isPaused = false;
+        HidePanel(PauseMenuPanel);
+
         SceneManager.LoadScene("playerScene");
-    }
+        }
 
     private void OnQuitGameClick(ClickEvent evt)
     {
@@ -216,7 +222,6 @@ public class MainMenuEvents : MonoBehaviour
                 Instantiate(playerPrefab);
                 Debug.Log("Player instantiated after scene load.");
             }
-            Destroy(gameObject);
         }
     }
 
@@ -234,10 +239,9 @@ public class MainMenuEvents : MonoBehaviour
 
     private IEnumerator DelayedLoadPrefs()
     {
-        yield return null; // Wait one frame
+        yield return null; // Waits one frame to load the settings
         LoadPrefs();
     }
-
 
     public void SavePrefs()
     {
