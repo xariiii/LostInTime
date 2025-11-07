@@ -131,7 +131,7 @@ public class MainMenuEvents : MonoBehaviour
         HidePanel(MainMenuVisual);
         HidePanel(SettingsVisual);
 
-        var controller = FindObjectOfType<Artemis.FPController>();
+        var controller = FindFirstObjectByType<Artemis.FPController>();
         if (controller != null)
             controller.PauseController();
     }
@@ -143,7 +143,7 @@ public class MainMenuEvents : MonoBehaviour
         isPaused = false;
         HidePanel(PauseMenuPanel);
 
-        var controller = FindObjectOfType<Artemis.FPController>();
+        var controller = FindFirstObjectByType<Artemis.FPController>();
         if (controller != null)
             controller.ResumeController();
     }
