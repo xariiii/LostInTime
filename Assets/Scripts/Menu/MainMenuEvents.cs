@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Windows.Forms;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -18,8 +19,8 @@ public class MainMenuEvents : MonoBehaviour
     private UnityEngine.UIElements.Button _saveSettingsButton;
     private UnityEngine.UIElements.DropdownField _qualityDropdown;
     private UnityEngine.UIElements.DropdownField _resolutionDropdown;
-    private UnityEngine.UIElements.Slider _volumeSlider;
 
+    private UnityEngine.UIElements.SliderInt _volumeSlider; 
     public GameObject playerPrefab;
     public VisualElement MainMenuVisual;
     public VisualElement SettingsVisual;
@@ -40,18 +41,16 @@ public class MainMenuEvents : MonoBehaviour
         _saveSettingsButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("SaveSettingsButton");
 
         // Getting the settings
+        _qualityDropdown = _document.rootVisualElement.Q<DropdownField>("QualityDropdown");
+        _resolutionDropdown = _document.rootVisualElement.Q<DropdownField>("ResolutionDropdown");
+        _volumeSlider = _document.rootVisualElement.Q<UnityEngine.UIElements.SliderInt>("VolumeSlider");
 
-        DropdownField _qualityDropdown = _document.rootVisualElement.Q<DropdownField>("QualityDropdown");
-        DropdownField _resolutionDropdown = _document.rootVisualElement.Q<DropdownField>("ResolutionDropdown");
-        Slider _volumeSlider = _document.rootVisualElement.Q<Slider>("VolumeSlider");
 
         List<string> QualityOptions = new List<string> { "Niska", "Średnia", "Wysoka" };
         _qualityDropdown.choices = QualityOptions;
         _qualityDropdown.value = QualityOptions[1]; // medium set as default
 
         List<string> ResolutionOptions = new List<string> { "2560x1440", "1920x1080", "1600x900", "1366x768", "1280x720" };
-
-
         _resolutionDropdown.choices = ResolutionOptions;
         _resolutionDropdown.value = ResolutionOptions[1]; // 1920 x 1080 set as default
 
@@ -63,10 +62,8 @@ public class MainMenuEvents : MonoBehaviour
 
         _resolutionDropdown.RegisterValueChangedCallback(evt =>
         {
-            Debug.Log("Wybrano rozdzielczosc: " + evt.newValue);
-
+            Debug.Log("Wybrano rozdzielczość: " + evt.newValue);
             string[] resParts = evt.newValue.Split('x');
-
             if (resParts.Length == 2 &&
                 int.TryParse(resParts[0], out int width) &&
                 int.TryParse(resParts[1], out int height))
@@ -78,12 +75,13 @@ public class MainMenuEvents : MonoBehaviour
                 Debug.LogWarning("Nieprawidłowy format rozdzielczości: " + evt.newValue);
             }
         });
-        
+
         _volumeSlider.RegisterValueChangedCallback(evt =>
-        {
-            Debug.Log("Ustawiono głośność: " + evt.newValue);
-            AudioListener.volume = evt.newValue / 100f;
-        });
+            {
+                Debug.Log("Ustawiono głośność: " + evt.newValue);
+                AudioListener.volume = evt.newValue / 100f;
+            });
+
 
 
 
@@ -96,6 +94,8 @@ public class MainMenuEvents : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        StartCoroutine(DelayedLoadPrefs());
     }
 
     private void OnDisable()
@@ -104,6 +104,13 @@ public class MainMenuEvents : MonoBehaviour
         _settingsButton?.UnregisterCallback<ClickEvent>(OnSettingsGameClick);
         _quitButton?.UnregisterCallback<ClickEvent>(OnQuitGameClick);
         _goBackButton?.UnregisterCallback<ClickEvent>(OnGoBackClick);
+        _saveSettingsButton?.UnregisterCallback<ClickEvent>(OnSaveSettingsClick);
+    }
+
+    private IEnumerator DelayedLoadPrefs()
+    {
+        yield return null; // Wait one frame to Load the settings
+        LoadPrefs();
     }
 
     private void OnPlayGameClick(ClickEvent evt)
@@ -115,7 +122,6 @@ public class MainMenuEvents : MonoBehaviour
     private void OnSettingsGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Settings Button");
-
         HidePanel(MainMenuVisual);
         ShowPanel(SettingsVisual);
     }
@@ -123,7 +129,6 @@ public class MainMenuEvents : MonoBehaviour
     private void OnGoBackClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Go Back Button");
-
         HidePanel(SettingsVisual);
         ShowPanel(MainMenuVisual);
     }
@@ -131,7 +136,6 @@ public class MainMenuEvents : MonoBehaviour
     private void OnQuitGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Quit Button");
-
         DialogResult result = System.Windows.Forms.MessageBox.Show(
             "Czy na pewno chcesz wyjść?",
             "Potwierdzenie",
@@ -176,6 +180,53 @@ public class MainMenuEvents : MonoBehaviour
 
     private void OnSaveSettingsClick(ClickEvent evt)
     {
+        SavePrefs();
         Debug.Log("Saved the settings");
+        HidePanel(SettingsVisual);
+        ShowPanel(MainMenuVisual);
+        
+    }
+
+    public void SavePrefs()
+    {
+        PlayerPrefs.SetString("Quality", _qualityDropdown.value);
+        PlayerPrefs.SetString("Resolution", _resolutionDropdown.value);
+        PlayerPrefs.SetInt("Volume", _volumeSlider.value);
+        PlayerPrefs.Save();
+        Debug.Log("Preferences saved.");
+    }
+
+    public void LoadPrefs()
+    {
+
+        if (_volumeSlider == null)
+        {
+            Debug.LogError("volumeSlider is null in LoadPrefs. Check assignment and UXML name.");
+            return;
+        }
+
+        string quality = PlayerPrefs.GetString("Quality", "Średnia");
+        string resolution = PlayerPrefs.GetString("Resolution", "1920x1080");
+        int volume = PlayerPrefs.GetInt("Volume", 50);
+        _volumeSlider.value = volume;
+        AudioListener.volume = volume / 100f;
+
+
+        _qualityDropdown.value = quality;
+        _resolutionDropdown.value = resolution;
+        _volumeSlider.value = volume;
+
+        QualitySettings.SetQualityLevel(_qualityDropdown.choices.IndexOf(quality));
+
+        string[] resParts = resolution.Split('x');
+        if (resParts.Length == 2 &&
+            int.TryParse(resParts[0], out int width) &&
+            int.TryParse(resParts[1], out int height))
+        {
+            UnityEngine.Screen.SetResolution(width, height, FullScreenMode.Windowed);
+        }
+
+        AudioListener.volume = volume / 100f;
+        Debug.Log("Preferences loaded.");
     }
 }
