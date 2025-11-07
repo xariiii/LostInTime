@@ -17,13 +17,21 @@ public class MainMenuEvents : MonoBehaviour
     private UnityEngine.UIElements.Button _quitButton;
     private UnityEngine.UIElements.Button _goBackButton;
     private UnityEngine.UIElements.Button _saveSettingsButton;
+    private UnityEngine.UIElements.Button _pauseSettingsButton;
+    private UnityEngine.UIElements.Button _pauseQuitButton;
+    private UnityEngine.UIElements.Button _resumeButton;
+
     private UnityEngine.UIElements.DropdownField _qualityDropdown;
     private UnityEngine.UIElements.DropdownField _resolutionDropdown;
+    private UnityEngine.UIElements.SliderInt _volumeSlider;
 
-    private UnityEngine.UIElements.SliderInt _volumeSlider; 
     public GameObject playerPrefab;
     public VisualElement MainMenuVisual;
     public VisualElement SettingsVisual;
+    public VisualElement PauseMenuPanel;
+
+    private bool isPaused = false;
+    private bool cameFromPauseMenu = false;
 
     private void Awake()
     {
@@ -32,19 +40,23 @@ public class MainMenuEvents : MonoBehaviour
         // Getting the panels
         MainMenuVisual = _document.rootVisualElement.Q<VisualElement>("MainMenuPanel");
         SettingsVisual = _document.rootVisualElement.Q<VisualElement>("SettingsPanel");
+        PauseMenuPanel = _document.rootVisualElement.Q<VisualElement>("PauseMenuPanel");
 
         // Getting the buttons
-        _startButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("StartGameButton");
-        _settingsButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("SettingsButton");
-        _quitButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("QuitButton");
-        _goBackButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("GoBackButton");
-        _saveSettingsButton = _document.rootVisualElement.Q<UnityEngine.UIElements.Button>("SaveSettingsButton");
+        _startButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("StartGameButton");
+        _settingsButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("SettingsButton");
+        _quitButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("QuitButton");
+        _goBackButton = SettingsVisual.Q<UnityEngine.UIElements.Button>("GoBackButton");
+        _saveSettingsButton = SettingsVisual.Q<UnityEngine.UIElements.Button>("SaveSettingsButton");
+
+        _pauseSettingsButton = PauseMenuPanel.Q<UnityEngine.UIElements.Button>("PauseSettingsButton");
+        _pauseQuitButton = PauseMenuPanel.Q<UnityEngine.UIElements.Button>("PauseQuitButton");
+        _resumeButton = PauseMenuPanel.Q<UnityEngine.UIElements.Button>("ResumeButton");
 
         // Getting the settings
-        _qualityDropdown = _document.rootVisualElement.Q<DropdownField>("QualityDropdown");
-        _resolutionDropdown = _document.rootVisualElement.Q<DropdownField>("ResolutionDropdown");
-        _volumeSlider = _document.rootVisualElement.Q<UnityEngine.UIElements.SliderInt>("VolumeSlider");
-
+        _qualityDropdown = SettingsVisual.Q<DropdownField>("QualityDropdown");
+        _resolutionDropdown = SettingsVisual.Q<DropdownField>("ResolutionDropdown");
+        _volumeSlider = SettingsVisual.Q<UnityEngine.UIElements.SliderInt>("VolumeSlider");
 
         List<string> QualityOptions = new List<string> { "Niska", "Średnia", "Wysoka" };
         _qualityDropdown.choices = QualityOptions;
@@ -77,13 +89,10 @@ public class MainMenuEvents : MonoBehaviour
         });
 
         _volumeSlider.RegisterValueChangedCallback(evt =>
-            {
-                Debug.Log("Ustawiono głośność: " + evt.newValue);
-                AudioListener.volume = evt.newValue / 100f;
-            });
-
-
-
+        {
+            Debug.Log("Ustawiono głośność: " + evt.newValue);
+            AudioListener.volume = evt.newValue / 100f;
+        });
 
         // Registering button clicks
         _startButton?.RegisterCallback<ClickEvent>(OnPlayGameClick);
@@ -92,36 +101,61 @@ public class MainMenuEvents : MonoBehaviour
         _goBackButton?.RegisterCallback<ClickEvent>(OnGoBackClick);
         _saveSettingsButton?.RegisterCallback<ClickEvent>(OnSaveSettingsClick);
 
+        _pauseSettingsButton?.RegisterCallback<ClickEvent>(OnPauseSettingsClick);
+        _pauseQuitButton?.RegisterCallback<ClickEvent>(OnQuitGameClick);
+        _resumeButton?.RegisterCallback<ClickEvent>(OnResumeClick);
+
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         StartCoroutine(DelayedLoadPrefs());
     }
 
-    private void OnDisable()
+    private void Update()
     {
-        _startButton?.UnregisterCallback<ClickEvent>(OnPlayGameClick);
-        _settingsButton?.UnregisterCallback<ClickEvent>(OnSettingsGameClick);
-        _quitButton?.UnregisterCallback<ClickEvent>(OnQuitGameClick);
-        _goBackButton?.UnregisterCallback<ClickEvent>(OnGoBackClick);
-        _saveSettingsButton?.UnregisterCallback<ClickEvent>(OnSaveSettingsClick);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPaused)
+                PauseGame();
+            else
+                ResumeGame();
+        }
     }
 
-    private IEnumerator DelayedLoadPrefs()
+    private void PauseGame()
     {
-        yield return null; // Wait one frame to Load the settings
-        LoadPrefs();
+        Time.timeScale = 0f;
+        isPaused = true;
+        ShowPanel(PauseMenuPanel);
+        HidePanel(MainMenuVisual);
+        HidePanel(SettingsVisual);
     }
 
-    private void OnPlayGameClick(ClickEvent evt)
+    private void ResumeGame()
     {
-        Debug.Log("You pressed the Start Button");
-        SceneManager.LoadScene("playerScene");
+        Time.timeScale = 1f;
+        isPaused = false;
+        HidePanel(PauseMenuPanel);
+    }
+
+    private void OnResumeClick(ClickEvent evt)
+    {
+        ResumeGame();
+        Debug.Log("Resumed the game");
+    }
+
+    private void OnPauseSettingsClick(ClickEvent evt)
+    {
+        Debug.Log("You pressed the Pause Settings Button");
+        cameFromPauseMenu = true;
+        HidePanel(PauseMenuPanel);
+        ShowPanel(SettingsVisual);
     }
 
     private void OnSettingsGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Settings Button");
+        cameFromPauseMenu = false;
         HidePanel(MainMenuVisual);
         ShowPanel(SettingsVisual);
     }
@@ -130,7 +164,27 @@ public class MainMenuEvents : MonoBehaviour
     {
         Debug.Log("You pressed the Go Back Button");
         HidePanel(SettingsVisual);
-        ShowPanel(MainMenuVisual);
+        if (cameFromPauseMenu)
+            ShowPanel(PauseMenuPanel);
+        else
+            ShowPanel(MainMenuVisual);
+    }
+
+    private void OnSaveSettingsClick(ClickEvent evt)
+    {
+        SavePrefs();
+        Debug.Log("Saved the settings");
+        HidePanel(SettingsVisual);
+        if (cameFromPauseMenu)
+            ShowPanel(PauseMenuPanel);
+        else
+            ShowPanel(MainMenuVisual);
+    }
+
+    private void OnPlayGameClick(ClickEvent evt)
+    {
+        Debug.Log("You pressed the Start Button");
+        SceneManager.LoadScene("playerScene");
     }
 
     private void OnQuitGameClick(ClickEvent evt)
@@ -178,14 +232,12 @@ public class MainMenuEvents : MonoBehaviour
             panel.style.display = DisplayStyle.Flex;
     }
 
-    private void OnSaveSettingsClick(ClickEvent evt)
+    private IEnumerator DelayedLoadPrefs()
     {
-        SavePrefs();
-        Debug.Log("Saved the settings");
-        HidePanel(SettingsVisual);
-        ShowPanel(MainMenuVisual);
-        
+        yield return null; // Wait one frame
+        LoadPrefs();
     }
+
 
     public void SavePrefs()
     {
@@ -198,7 +250,6 @@ public class MainMenuEvents : MonoBehaviour
 
     public void LoadPrefs()
     {
-
         if (_volumeSlider == null)
         {
             Debug.LogError("volumeSlider is null in LoadPrefs. Check assignment and UXML name.");
@@ -208,9 +259,6 @@ public class MainMenuEvents : MonoBehaviour
         string quality = PlayerPrefs.GetString("Quality", "Średnia");
         string resolution = PlayerPrefs.GetString("Resolution", "1920x1080");
         int volume = PlayerPrefs.GetInt("Volume", 50);
-        _volumeSlider.value = volume;
-        AudioListener.volume = volume / 100f;
-
 
         _qualityDropdown.value = quality;
         _resolutionDropdown.value = resolution;
