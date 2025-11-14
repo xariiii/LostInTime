@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: eb945904923aa9646b940427f512f008
   - enabled: 1
-    path: Assets/Scenes/playerScene.unity
-    guid: 2f064b14cc9dbbb43af6e5a46ba28ec5
-  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/physicsTaskMap.unity
+    guid: bc5f76de9a37dd94e8a7cd4d5a683376
+  - enabled: 1
+    path: Assets/Scenes/interationScene.unity
+    guid: 6a08d3b0fad369b41adff182b46ed554
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
