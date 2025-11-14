@@ -721,7 +721,7 @@ Transform:
   m_GameObject: {fileID: 756484561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.44, y: 0.6, z: -1.44}
+  m_LocalPosition: {x: -0.4, y: 0.6, z: 3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -739,8 +739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74851e4dae2c803458a6f3358a1a586b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerScene
-  sceneToLoad: chemistryTaskMap
+  sceneToLoad: biologyTaskMap
   spawnPointTag: SpawnPoint
+  playerPrefab: {fileID: 1056369132}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +991,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
