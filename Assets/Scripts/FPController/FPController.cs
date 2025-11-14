@@ -35,7 +35,7 @@ namespace Artemis
         }
 
         [Header("Looking Parameters")]
-        public Vector2 LookSensitivity = new Vector2(0.2f, 0.2f);
+        public Vector2 LookSensitivity = new Vector2(1f, 1f);
 
         public float PitchLimit = 85f;
 
