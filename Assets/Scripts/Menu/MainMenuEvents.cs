@@ -30,6 +30,10 @@ public class MainMenuEvents : MonoBehaviour
     public VisualElement SettingsVisual;
     public VisualElement PauseMenuPanel;
 
+    private VisualElement FadeOverlay;
+
+    
+
     private bool isPaused = false;
     private bool cameFromPauseMenu = false;
 
@@ -42,6 +46,15 @@ public class MainMenuEvents : MonoBehaviour
         SettingsVisual = _document.rootVisualElement.Q<VisualElement>("SettingsPanel");
         PauseMenuPanel = _document.rootVisualElement.Q<VisualElement>("PauseMenuPanel");
 
+        FadeOverlay = _document.rootVisualElement.Q<VisualElement>("FadeOverlay");
+        if (FadeOverlay != null)
+        {
+            FadeOverlay.style.display = DisplayStyle.None; // startowo ukryty
+            FadeOverlay.style.opacity = 0f;
+        }
+
+
+        
         // Getting the buttons
         _startButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("StartGameButton");
         _settingsButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("SettingsButton");
@@ -111,6 +124,8 @@ public class MainMenuEvents : MonoBehaviour
 
         StartCoroutine(DelayedLoadPrefs());
     }
+
+    
 
     private void Update() 
     {
@@ -190,16 +205,45 @@ public class MainMenuEvents : MonoBehaviour
             ShowPanel(MainMenuVisual);
     }
 
-    private void OnPlayGameClick(ClickEvent evt)
+private IEnumerator FadeAndLoad(string sceneName)
+{
+    float duration = 1f;
+    float t = 0f;
+
+    while (t < duration)
     {
-        Debug.Log("You pressed the Start Button");
+        t += Time.deltaTime;
+        float alpha = Mathf.Clamp01(t / duration);
+        FadeOverlay.style.opacity = alpha;
+        yield return null;
+    }
 
-        Time.timeScale = 1f;
-        isPaused = false;
-        HidePanel(MainMenuVisual);
+    SceneManager.LoadScene(sceneName);
+}
 
+
+
+ private void OnPlayGameClick(ClickEvent evt)
+{
+    Debug.Log("You pressed the Start Button");
+
+    Time.timeScale = 1f;
+    isPaused = false;
+    HidePanel(MainMenuVisual);
+
+    if (FadeOverlay != null)
+    {
+        FadeOverlay.style.display = DisplayStyle.Flex;
+        FadeOverlay.style.opacity = 0f;
+        StartCoroutine(FadeAndLoad("PhysicsTaskMap"));
+    }
+    else
+    {
         SceneManager.LoadScene("PhysicsTaskMap");
     }
+}
+
+
 
     private void OnGoToMainMenuClick(ClickEvent evt)
     {
