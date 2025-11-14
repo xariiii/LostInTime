@@ -240,13 +240,14 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
 
         var controller = player.GetComponent<Artemis.FPController>();
         if (controller != null)
         {
             controller.ResumeController();
         }
+
 
         HidePanel(MainMenuVisual);
         HidePanel(SettingsVisual);
