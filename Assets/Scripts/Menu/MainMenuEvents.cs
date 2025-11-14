@@ -200,7 +200,7 @@ public class MainMenuEvents : MonoBehaviour
         isPaused = false;
         HidePanel(PauseMenuPanel);
 
-        SceneManager.LoadScene("playerScene");
+        SceneManager.LoadScene("PhysicsTaskMap");
     }
 
     private void OnGoToMainMenuClick(ClickEvent evt)
