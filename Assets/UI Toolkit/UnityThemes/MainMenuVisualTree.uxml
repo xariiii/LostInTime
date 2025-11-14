@@ -22,5 +22,4 @@
         <ui:Button text="Ustawienia&#10;" name="PauseSettingsButton" class="button" />
         <ui:Button text="Wyjscie do menu&#10;" name="PauseQuitButton" class="button" />
     </ui:VisualElement>
-    <ui:VisualElement name="FadeOverlay" style="flex-grow: 1; width: 1920px; height: 1080px; position: absolute; background-color: rgba(255, 1, 1, 0); display: none;" />
 </ui:UXML>

@@ -30,10 +30,6 @@ public class MainMenuEvents : MonoBehaviour
     public VisualElement SettingsVisual;
     public VisualElement PauseMenuPanel;
 
-    private VisualElement FadeOverlay;
-
-    
-
     private bool isPaused = false;
     private bool cameFromPauseMenu = false;
 
@@ -46,15 +42,6 @@ public class MainMenuEvents : MonoBehaviour
         SettingsVisual = _document.rootVisualElement.Q<VisualElement>("SettingsPanel");
         PauseMenuPanel = _document.rootVisualElement.Q<VisualElement>("PauseMenuPanel");
 
-        FadeOverlay = _document.rootVisualElement.Q<VisualElement>("FadeOverlay");
-        if (FadeOverlay != null)
-        {
-            FadeOverlay.style.display = DisplayStyle.None; // startowo ukryty
-            FadeOverlay.style.opacity = 0f;
-        }
-
-
-        
         // Getting the buttons
         _startButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("StartGameButton");
         _settingsButton = MainMenuVisual.Q<UnityEngine.UIElements.Button>("SettingsButton");
@@ -124,8 +111,6 @@ public class MainMenuEvents : MonoBehaviour
 
         StartCoroutine(DelayedLoadPrefs());
     }
-
-    
 
     private void Update() 
     {
@@ -205,45 +190,16 @@ public class MainMenuEvents : MonoBehaviour
             ShowPanel(MainMenuVisual);
     }
 
-private IEnumerator FadeAndLoad(string sceneName)
-{
-    float duration = 1f;
-    float t = 0f;
-
-    while (t < duration)
+    private void OnPlayGameClick(ClickEvent evt)
     {
-        t += Time.deltaTime;
-        float alpha = Mathf.Clamp01(t / duration);
-        FadeOverlay.style.opacity = alpha;
-        yield return null;
-    }
+        Debug.Log("You pressed the Start Button");
 
-    SceneManager.LoadScene(sceneName);
-}
+        Time.timeScale = 1f;
+        isPaused = false;
+        HidePanel(MainMenuVisual);
 
-
-
- private void OnPlayGameClick(ClickEvent evt)
-{
-    Debug.Log("You pressed the Start Button");
-
-    Time.timeScale = 1f;
-    isPaused = false;
-    HidePanel(MainMenuVisual);
-
-    if (FadeOverlay != null)
-    {
-        FadeOverlay.style.display = DisplayStyle.Flex;
-        FadeOverlay.style.opacity = 0f;
-        StartCoroutine(FadeAndLoad("PhysicsTaskMap"));
-    }
-    else
-    {
         SceneManager.LoadScene("PhysicsTaskMap");
     }
-}
-
-
 
     private void OnGoToMainMenuClick(ClickEvent evt)
     {
@@ -284,13 +240,14 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
 
         var controller = player.GetComponent<Artemis.FPController>();
         if (controller != null)
         {
             controller.ResumeController();
         }
+
 
         HidePanel(MainMenuVisual);
         HidePanel(SettingsVisual);
