@@ -136,7 +136,6 @@ public class MainMenuEvents : MonoBehaviour
             controller.PauseController();
     }
 
-
     private void ResumeGame()
     {
         Time.timeScale = 1f;
@@ -147,7 +146,6 @@ public class MainMenuEvents : MonoBehaviour
         if (controller != null)
             controller.ResumeController();
     }
-
 
     private void OnResumeClick(ClickEvent evt)
     {
@@ -198,9 +196,9 @@ public class MainMenuEvents : MonoBehaviour
 
         Time.timeScale = 1f;
         isPaused = false;
-        HidePanel(PauseMenuPanel);
+        HidePanel(MainMenuVisual);
 
-        SceneManager.LoadScene("playerScene");
+        SceneManager.LoadScene("PhysicsTaskMap");
     }
 
     private void OnGoToMainMenuClick(ClickEvent evt)
@@ -229,21 +227,32 @@ public class MainMenuEvents : MonoBehaviour
 #endif
         }
     }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    if (scene.name == "PhysicsTaskMap")
     {
-        if (scene.name == "playerScene")
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null)
         {
-            if (GameObject.FindWithTag("Player") == null)
-            {
-                Instantiate(playerPrefab);
-                Debug.Log("Player instantiated after scene load.");
-            }
-            HidePanel(MainMenuVisual);
-            HidePanel(SettingsVisual);
-            HidePanel(PauseMenuPanel);
+            player = Instantiate(playerPrefab);
+            Debug.Log("Player instantiated after scene load.");
         }
+
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
+        Time.timeScale = 1f;
+
+        var controller = player.GetComponent<Artemis.FPController>();
+        if (controller != null)
+        {
+            controller.ResumeController();
+        }
+
+        HidePanel(MainMenuVisual);
+        HidePanel(SettingsVisual);
+        HidePanel(PauseMenuPanel);
     }
+}
 
     private void HidePanel(VisualElement panel)
     {
@@ -271,7 +280,6 @@ public class MainMenuEvents : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Preferences saved.");
     }
-
     public void LoadPrefs()
     {
         if (_volumeSlider == null)
