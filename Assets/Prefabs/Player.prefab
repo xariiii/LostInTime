@@ -103,12 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87444ab774b42d24bba7fe4d2da410d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPController
+  IsPaused: 1
   Acceleration: 20
   WalkSpeed: 3.5
   SprintSpeed: 8
   JumpHeight: 20
   CanDoubleJump: 1
-  LookSensitivity: {x: 0.1, y: 0.1}
+  LookSensitivity: {x: 1, y: 1}
   PitchLimit: 85
   currentPitch: 0
   CameraNormalFOV: 60

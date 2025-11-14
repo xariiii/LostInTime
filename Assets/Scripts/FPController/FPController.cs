@@ -35,7 +35,7 @@ namespace Artemis
         }
 
         [Header("Looking Parameters")]
-        public Vector2 LookSensitivity = new Vector2(0.1f, 0.1f);
+        public Vector2 LookSensitivity = new Vector2(0.2f, 0.2f);
 
         public float PitchLimit = 85f;
 
@@ -89,6 +89,15 @@ namespace Artemis
         public UnityEvent Landed;
 
         #region Unity Methods
+
+        void Awake()
+        {
+            characterController = GetComponent<CharacterController>();
+            IsPaused = false; // 🔹 od razu odblokuj sterowanie
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
         void OnValidate()
         {
             if (characterController == null)
@@ -102,6 +111,12 @@ namespace Artemis
         {
             if (IsPaused) return;
 
+            // 🔹 Pobieranie inputu
+            MoveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            LookInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+            SprintInput = Input.GetKey(KeyCode.LeftShift);
+
+            // 🔹 Ruch, kamera, itd.
             MoveUpdate();
             LookUpdate();
             CameraUpdate();
@@ -114,6 +129,7 @@ namespace Artemis
 
             wasGrounded = IsGrounded;
         }
+
 
         #endregion
 
