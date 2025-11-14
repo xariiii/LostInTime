@@ -93,7 +93,7 @@ namespace Artemis
         void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            IsPaused = false; // 🔹 od razu odblokuj sterowanie
+            IsPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
