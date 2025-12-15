@@ -1,17 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Zone
+{
+    public BlockType zoneType;
+    public RectTransform rect;
+}
+
 public class DragManager : MonoBehaviour
 {
-    [SerializeField]
-    private RectTransform
-        _defaultLayer = null,
-        _dragLayer = null;
+    [SerializeField] private RectTransform _defaultLayer;
+    [SerializeField] private RectTransform _dragLayer;
+    [SerializeField] private List<Zone> zones = new List<Zone>();
 
     private Rect _boundingBox;
+    private DragObject _currentDraggedObject;
 
-    private DragObject _currentDraggedObject = null;
+    private Vector3[] _cornersA = new Vector3[4];
+    private Vector3[] _cornersB = new Vector3[4];
+
     public DragObject CurrentDraggedObject => _currentDraggedObject;
 
     private void Awake()
@@ -47,5 +55,34 @@ public class DragManager : MonoBehaviour
             rectTransform.lossyScale.y * rectTransform.rect.size.y);
 
         _boundingBox = new Rect(position, size);
+    }
+
+    public void DetectIfInZone(DragObject drag)
+    {
+        RectTransform dragRect = drag.GetComponent<RectTransform>();
+
+        foreach (var zone in zones)
+        {
+            if (IsRectOverlapping(dragRect, zone.rect))
+            {
+                if (drag.blockType == zone.zoneType)
+                {
+                    drag.transform.position = zone.rect.transform.position;
+                    drag.locked = true;
+                }
+                return;
+            }
+        }
+    }
+
+    private bool IsRectOverlapping(RectTransform a, RectTransform b)
+    {
+        a.GetWorldCorners(_cornersA);
+        b.GetWorldCorners(_cornersB);
+
+        Rect rectA = new Rect(_cornersA[0], _cornersA[2] - _cornersA[0]);
+        Rect rectB = new Rect(_cornersB[0], _cornersB[2] - _cornersB[0]);
+
+        return rectA.Overlaps(rectB);
     }
 }
