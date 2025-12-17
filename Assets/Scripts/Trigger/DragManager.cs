@@ -10,6 +10,10 @@ public class Zone
 
 public class DragManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Lightbulb;
+    [SerializeField] private GameObject Task;
+    [SerializeField] private GameObject uiPanel;
+    [SerializeField] private GameObject TriggerZone;
     [SerializeField] private RectTransform _defaultLayer;
     [SerializeField] private RectTransform _dragLayer;
     [SerializeField] private List<Zone> zones = new List<Zone>();
@@ -60,6 +64,8 @@ public class DragManager : MonoBehaviour
     public void DetectIfInZone(DragObject drag)
     {
         RectTransform dragRect = drag.GetComponent<RectTransform>();
+        var LightbulbObject = Lightbulb.GetComponent<Renderer>();
+        var TaskObject = Task.GetComponent<Renderer>();
 
         foreach (var zone in zones)
         {
@@ -69,11 +75,41 @@ public class DragManager : MonoBehaviour
                 {
                     drag.transform.position = zone.rect.transform.position;
                     drag.locked = true;
+                    if (AreAllZonesCompleted())
+                    {
+                        TriggerZone.SetActive(false);
+                        uiPanel.SetActive(false);
+                        LightbulbObject.material.SetColor("_BaseColor", Color.yellow);
+                        TaskObject.material.SetColor("_BaseColor", Color.green);
+                    }
                 }
-                return;
+
             }
         }
     }
+
+    private bool AreAllZonesCompleted()
+{
+    foreach (var zone in zones)
+    {
+        bool found = false;
+
+        foreach (var drag in FindObjectsOfType<DragObject>())
+        {
+            if (drag.blockType == zone.zoneType && drag.locked)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+            return false;
+    }
+
+    return true;
+}
+
 
     private bool IsRectOverlapping(RectTransform a, RectTransform b)
     {
