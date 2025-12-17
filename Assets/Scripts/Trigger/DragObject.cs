@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
 public class DragObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    private DragManager _manager = null;
+    private DragManager _manager;
+    public BlockType blockType;
+    public bool locked = false;
 
     private Vector2 _centerPoint;
     private Vector2 _worldCenterPoint => transform.TransformPoint(_centerPoint);
@@ -19,11 +19,14 @@ public class DragObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (locked) return;
         _manager.RegisterDraggedObject(this);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (locked) return;
+
         if (_manager.IsWithinBounds(_worldCenterPoint + eventData.delta))
         {
             transform.Translate(eventData.delta);
@@ -33,5 +36,6 @@ public class DragObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         _manager.UnregisterDraggedObject(this);
+        _manager.DetectIfInZone(this);
     }
 }
