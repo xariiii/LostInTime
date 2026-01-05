@@ -1,11 +1,17 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class TriggerUI : MonoBehaviour
 {
     public GameObject uiPanel;
+    private Volume volume;
+    private Vignette vignette;
+
 
     void OnTriggerEnter(Collider other)
     {
+        volume = GetComponent<Volume>();
         if (other.CompareTag("Player"))
         {
             uiPanel.SetActive(true);
