@@ -18,6 +18,14 @@ public class DragManager : MonoBehaviour
     [SerializeField] private RectTransform _dragLayer;
     [SerializeField] private List<Zone> zones = new List<Zone>();
 
+    // 🔥 NOWE — podmiana obiektów
+    [Header("Podmiana obiektów po ukończeniu zadania")]
+    [SerializeField] private GameObject objectToHide;
+    [SerializeField] private GameObject objectToShow;
+
+    // 🔥 NOWE — dla GroupManager
+    public bool IsCompleted { get; private set; } = false;
+
     private Rect _boundingBox;
     private DragObject _currentDraggedObject;
 
@@ -75,41 +83,63 @@ public class DragManager : MonoBehaviour
                 {
                     drag.transform.position = zone.rect.transform.position;
                     drag.locked = true;
+
                     if (AreAllZonesCompleted())
                     {
+                        // 🔥 PODMIANA OBIEKTÓW (NOWE)
+                        ReplaceObjects();
+
+                        // 🔥 ORYGINALNE DZIAŁANIE
                         TriggerZone.SetActive(false);
                         uiPanel.SetActive(false);
                         LightbulbObject.material.SetColor("_BaseColor", Color.yellow);
                         TaskObject.material.SetColor("_BaseColor", Color.green);
+
+                        // 🔥 dla GroupManager
+                        IsCompleted = true;
                     }
                 }
-
             }
         }
     }
 
     private bool AreAllZonesCompleted()
-{
-    foreach (var zone in zones)
     {
-        bool found = false;
-
-        foreach (var drag in FindObjectsOfType<DragObject>())
+        foreach (var zone in zones)
         {
-            if (drag.blockType == zone.zoneType && drag.locked)
+            bool found = false;
+
+            foreach (var drag in FindObjectsOfType<DragObject>())
             {
-                found = true;
-                break;
+                if (drag.blockType == zone.zoneType && drag.locked)
+                {
+                    found = true;
+                    break;
+                }
             }
+
+            if (!found)
+                return false;
         }
 
-        if (!found)
-            return false;
+        return true;
     }
 
-    return true;
-}
+    // 🔥 NOWA FUNKCJA — podmiana obiektów
+    private void ReplaceObjects()
+    {
+        if (objectToHide != null)
+            objectToHide.SetActive(false);
 
+        if (objectToShow != null)
+        {
+            objectToShow.transform.position = objectToHide.transform.position;
+            objectToShow.transform.rotation = objectToHide.transform.rotation;
+            objectToShow.transform.localScale = objectToHide.transform.localScale;
+
+            objectToShow.SetActive(true);
+        }
+    }
 
     private bool IsRectOverlapping(RectTransform a, RectTransform b)
     {
