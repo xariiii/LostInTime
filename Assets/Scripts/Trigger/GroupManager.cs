@@ -6,6 +6,7 @@ public class GroupManager : MonoBehaviour
 
     [SerializeField] private GameObject objectToActivate; // what happens after task is done
     [SerializeField] private GameObject objectToDeactivate;
+    [SerializeField] private GameObject objectToShowInChest;
 
     private bool groupCompleted = false;
 
@@ -37,5 +38,8 @@ public class GroupManager : MonoBehaviour
 
         if (objectToDeactivate != null)
             objectToDeactivate.SetActive(false);
+
+        if (objectToShowInChest != null)
+            objectToShowInChest.SetActive(true);
     }
 }
