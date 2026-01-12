@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class GroupManager : MonoBehaviour
 {
-    [Header("Drag Managery w tej grupie")]
-    [SerializeField] private DragManager[] dragManagers;
+    [SerializeField] private DragManager[] dragManagers; // drag manager in group manager
 
-    [Header("Co zrobić po ukończeniu grupy")]
-    [SerializeField] private GameObject objectToActivate;
+    [SerializeField] private GameObject objectToActivate; // what happens after task is done
     [SerializeField] private GameObject objectToDeactivate;
 
     private bool groupCompleted = false;
@@ -32,7 +30,7 @@ public class GroupManager : MonoBehaviour
 
     private void OnGroupCompleted()
     {
-        Debug.Log("Grupa zadań została ukończona!");
+        Debug.Log("All task have been done!");
 
         if (objectToActivate != null)
             objectToActivate.SetActive(true);

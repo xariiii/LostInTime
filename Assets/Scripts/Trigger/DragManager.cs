@@ -18,12 +18,10 @@ public class DragManager : MonoBehaviour
     [SerializeField] private RectTransform _dragLayer;
     [SerializeField] private List<Zone> zones = new List<Zone>();
 
-    // 🔥 NOWE — podmiana obiektów
     [Header("Podmiana obiektów po ukończeniu zadania")]
     [SerializeField] private GameObject objectToHide;
     [SerializeField] private GameObject objectToShow;
 
-    // 🔥 NOWE — dla GroupManager
     public bool IsCompleted { get; private set; } = false;
 
     private Rect _boundingBox;
@@ -86,16 +84,13 @@ public class DragManager : MonoBehaviour
 
                     if (AreAllZonesCompleted())
                     {
-                        // 🔥 PODMIANA OBIEKTÓW (NOWE)
                         ReplaceObjects();
 
-                        // 🔥 ORYGINALNE DZIAŁANIE
                         TriggerZone.SetActive(false);
                         uiPanel.SetActive(false);
                         LightbulbObject.material.SetColor("_BaseColor", Color.yellow);
                         TaskObject.material.SetColor("_BaseColor", Color.green);
 
-                        // 🔥 dla GroupManager
                         IsCompleted = true;
                     }
                 }
@@ -104,26 +99,30 @@ public class DragManager : MonoBehaviour
     }
 
     private bool AreAllZonesCompleted()
+{
+    // Get all DragObjects once instead of inside the loop
+    var allDrags = FindObjectsByType<DragObject>(FindObjectsSortMode.None);
+
+    foreach (var zone in zones)
     {
-        foreach (var zone in zones)
+        bool found = false;
+
+        foreach (var drag in allDrags)
         {
-            bool found = false;
-
-            foreach (var drag in FindObjectsOfType<DragObject>())
+            if (drag.blockType == zone.zoneType && drag.locked)
             {
-                if (drag.blockType == zone.zoneType && drag.locked)
-                {
-                    found = true;
-                    break;
-                }
+                found = true;
+                break;
             }
-
-            if (!found)
-                return false;
         }
 
-        return true;
+        if (!found)
+            return false;
     }
+
+    return true;
+}
+
 
     // 🔥 NOWA FUNKCJA — podmiana obiektów
     private void ReplaceObjects()
