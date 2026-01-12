@@ -11,8 +11,8 @@ public class Zone
 public class DragManager : MonoBehaviour
 {
     [SerializeField] private GameObject Lightbulb;
-    [SerializeField] private GameObject Task;
-    [SerializeField] private GameObject uiPanel;
+    [SerializeField] private GameObject TaskStation;
+    [SerializeField] private GameObject TaskUiPanel;
     [SerializeField] private GameObject TriggerZone;
     [SerializeField] private RectTransform _defaultLayer;
     [SerializeField] private RectTransform _dragLayer;
@@ -71,7 +71,7 @@ public class DragManager : MonoBehaviour
     {
         RectTransform dragRect = drag.GetComponent<RectTransform>();
         var LightbulbObject = Lightbulb.GetComponent<Renderer>();
-        var TaskObject = Task.GetComponent<Renderer>();
+        var TaskObject = TaskStation.GetComponent<Renderer>();
 
         foreach (var zone in zones)
         {
@@ -87,7 +87,7 @@ public class DragManager : MonoBehaviour
                         ReplaceObjects();
 
                         TriggerZone.SetActive(false);
-                        uiPanel.SetActive(false);
+                        TaskUiPanel.SetActive(false);
                         LightbulbObject.material.SetColor("_BaseColor", Color.yellow);
                         TaskObject.material.SetColor("_BaseColor", Color.green);
 
@@ -123,8 +123,6 @@ public class DragManager : MonoBehaviour
     return true;
 }
 
-
-    // 🔥 NOWA FUNKCJA — podmiana obiektów
     private void ReplaceObjects()
     {
         if (objectToHide != null)
