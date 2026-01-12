@@ -11,12 +11,18 @@ public class Zone
 public class DragManager : MonoBehaviour
 {
     [SerializeField] private GameObject Lightbulb;
-    [SerializeField] private GameObject Task;
-    [SerializeField] private GameObject uiPanel;
+    [SerializeField] private GameObject TaskStation;
+    [SerializeField] private GameObject TaskUiPanel;
     [SerializeField] private GameObject TriggerZone;
     [SerializeField] private RectTransform _defaultLayer;
     [SerializeField] private RectTransform _dragLayer;
     [SerializeField] private List<Zone> zones = new List<Zone>();
+
+    [Header("Podmiana obiektów po ukończeniu zadania")]
+    [SerializeField] private GameObject objectToHide;
+    [SerializeField] private GameObject objectToShow;
+
+    public bool IsCompleted { get; private set; } = false;
 
     private Rect _boundingBox;
     private DragObject _currentDraggedObject;
@@ -65,7 +71,7 @@ public class DragManager : MonoBehaviour
     {
         RectTransform dragRect = drag.GetComponent<RectTransform>();
         var LightbulbObject = Lightbulb.GetComponent<Renderer>();
-        var TaskObject = Task.GetComponent<Renderer>();
+        var TaskObject = TaskStation.GetComponent<Renderer>();
 
         foreach (var zone in zones)
         {
@@ -75,26 +81,33 @@ public class DragManager : MonoBehaviour
                 {
                     drag.transform.position = zone.rect.transform.position;
                     drag.locked = true;
+
                     if (AreAllZonesCompleted())
                     {
+                        ReplaceObjects();
+
                         TriggerZone.SetActive(false);
-                        uiPanel.SetActive(false);
+                        TaskUiPanel.SetActive(false);
                         LightbulbObject.material.SetColor("_BaseColor", Color.yellow);
                         TaskObject.material.SetColor("_BaseColor", Color.green);
+
+                        IsCompleted = true;
                     }
                 }
-
             }
         }
     }
 
     private bool AreAllZonesCompleted()
 {
+    // Get all DragObjects once instead of inside the loop
+    var allDrags = FindObjectsByType<DragObject>(FindObjectsSortMode.None);
+
     foreach (var zone in zones)
     {
         bool found = false;
 
-        foreach (var drag in FindObjectsOfType<DragObject>())
+        foreach (var drag in allDrags)
         {
             if (drag.blockType == zone.zoneType && drag.locked)
             {
@@ -110,6 +123,20 @@ public class DragManager : MonoBehaviour
     return true;
 }
 
+    private void ReplaceObjects()
+    {
+        if (objectToHide != null)
+            objectToHide.SetActive(false);
+
+        if (objectToShow != null)
+        {
+            objectToShow.transform.position = objectToHide.transform.position;
+            objectToShow.transform.rotation = objectToHide.transform.rotation;
+            objectToShow.transform.localScale = objectToHide.transform.localScale;
+
+            objectToShow.SetActive(true);
+        }
+    }
 
     private bool IsRectOverlapping(RectTransform a, RectTransform b)
     {
