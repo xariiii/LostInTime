@@ -198,7 +198,7 @@ public class MainMenuEvents : MonoBehaviour
         isPaused = false;
         HidePanel(MainMenuVisual);
 
-        SceneManager.LoadScene("PhysicsTaskMap");
+        SceneManager.LoadScene("mainMap");
     }
 
     private void OnGoToMainMenuClick(ClickEvent evt)
@@ -229,7 +229,7 @@ public class MainMenuEvents : MonoBehaviour
     }
 private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
-    if (scene.name == "PhysicsTaskMap")
+    if (scene.name == "mainMap")
     {
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
