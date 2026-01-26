@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!114 &-7806378421407339697
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -48,6 +49,9 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-895060990226312966
+=======
+--- !u!114 &-626500222213910950
+>>>>>>> a14a240f1d87a03009eff850e377e3e6d496b13d
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Vignette
   active: 1
   color:
+<<<<<<< HEAD
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   center:
@@ -75,6 +80,22 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+=======
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.486
+  rounded:
+    m_OverrideState: 1
+    m_Value: 1
+>>>>>>> a14a240f1d87a03009eff850e377e3e6d496b13d
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +109,7 @@ MonoBehaviour:
   m_Name: Global Volume Profile
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
+<<<<<<< HEAD
   - {fileID: 5586103376856161495}
   - {fileID: -7806378421407339697}
   - {fileID: -895060990226312966}
@@ -131,3 +153,6 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
+=======
+  - {fileID: -626500222213910950}
+>>>>>>> a14a240f1d87a03009eff850e377e3e6d496b13d
