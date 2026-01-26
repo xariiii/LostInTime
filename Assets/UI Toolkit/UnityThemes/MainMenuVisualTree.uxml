@@ -1,0 +1,25 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=11006eaa04c46354db8b2406d0ed6b11&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1; background-color: rgb(52, 51, 70); display: flex; background-image: url(&quot;project://database/Assets/Models/background.jpg?fileID=2800000&amp;guid=768c8ee7e75540f4fa07d1ac3a6e9514&amp;type=3#background&quot;);">
+        <ui:Label text="Lost in Time" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px;" />
+        <ui:Button text="Rozpocznij&#10;" name="StartGameButton" class="button" />
+        <ui:Button text="Ustawienia" name="SettingsButton" class="button" />
+        <ui:Button text="wyjscie&#10;" name="QuitButton" class="button" />
+    </ui:VisualElement>
+    <ui:VisualElement name="SettingsPanel" style="flex-grow: 1; display: none; position: relative; background-color: rgb(52, 51, 70); top: 0; left: 0; height: 1080px; width: 1920px; right: 0; bottom: 0; align-items: center; justify-content: flex-start; align-self: center; visibility: visible;">
+        <ui:Label text="USTAWIENIA" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; display: flex;" />
+        <ui:Button text="&lt;-" name="GoBackButton" enable-rich-text="true" class="button" style="position: absolute; align-items: flex-start; justify-content: flex-start; align-self: flex-end; align-content: center; width: 160px; top: 40px; left: 10px;" />
+        <ui:VisualElement name="Settings" style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 9px; padding-right: 9px; padding-bottom: 9px; padding-left: 9px; align-self: center; justify-content: center;">
+            <ui:DropdownField label="JAKOŚĆ GRAFIKI" name="QualityDropdown" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
+            <ui:DropdownField label="ROZDZIELCZOŚĆ" name="ResolutionDropdown" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
+            <ui:SliderInt label="MUZYKA&#10;" value="42" high-value="100" name="VolumeSlider" class="SettingTextStyle" style="bottom: 0; top: 0; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
+        </ui:VisualElement>
+        <ui:Button text="ZAPISZ" name="SaveSettingsButton" class="button" style="top: 0; bottom: 0; justify-content: center; align-items: flex-start; flex-direction: column; margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; padding-top: 50px; padding-right: 50px; padding-bottom: 50px; padding-left: 50px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PauseMenuPanel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.59); display: none;">
+        <ui:Label text="Gra zatrzymana" name="Header" class="header" />
+        <ui:Button text="Wroc do rozgrywki&#10;" name="ResumeButton" class="button" />
+        <ui:Button text="Ustawienia&#10;" name="PauseSettingsButton" class="button" />
+        <ui:Button text="Wyjscie do menu&#10;" name="PauseQuitButton" class="button" />
+    </ui:VisualElement>
+</ui:UXML>
