@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/physicsMap.unity
+    path: Assets/Scenes/technologyMap.unity
     guid: b28e5544227db944bb0e868471c26a2a
   - enabled: 1
     path: Assets/Scenes/mainMenu.unity
