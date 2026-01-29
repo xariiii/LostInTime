@@ -23,6 +23,14 @@ public class LaserMirror : MonoBehaviour
             {
                 line.positionCount++;
                 line.SetPosition(line.positionCount - 1, hit.point);
+
+                LaserDetector detector = hit.collider.GetComponent<LaserDetector>();
+                if (detector != null)
+                {
+                    detector.Hit();
+                    break;
+                }
+
                 if (hit.collider.CompareTag("Mirror"))
                 {
                     direction = Vector3.Reflect(direction, hit.normal);
@@ -34,7 +42,8 @@ public class LaserMirror : MonoBehaviour
                 }
             }
             else
-            {                line.positionCount++;
+            {
+                line.positionCount++;
                 line.SetPosition(line.positionCount - 1, origin + direction * maxDistance);
                 break;
             }
