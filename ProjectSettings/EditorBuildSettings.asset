@@ -6,35 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/technologyMap.unity
+    guid: b28e5544227db944bb0e868471c26a2a
+  - enabled: 1
     path: Assets/Scenes/mainMenu.unity
     guid: eb945904923aa9646b940427f512f008
+  - enabled: 1
+    path: Assets/Scenes/mainMap.unity
+    guid: b12c0f756a827104c9872f481de9843a
   - enabled: 0
-    path: Assets/Scenes/playerScene.unity
-    guid: 2f064b14cc9dbbb43af6e5a46ba28ec5
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/physicsTaskMap.unity
-    guid: bc5f76de9a37dd94e8a7cd4d5a683376
-  - enabled: 1
-    path: Assets/Scenes/interationScene.unity
-    guid: 6a08d3b0fad369b41adff182b46ed554
-  - enabled: 1
     path: Assets/Scenes/chemistryTaskMap.unity
     guid: 712ec15150216d34989268a6eb75ece4
   - enabled: 1
     path: Assets/Scenes/biologyTaskMap.unity
     guid: 2c8e0109c6ec84247a4e933cd5c38f23
   - enabled: 1
-    path: Assets/Scenes/medicineTaskMap.unity
-    guid: 4857c3fae1788ad46a5eeba07bc05a9a
-  - enabled: 1
-    path: Assets/Scenes/technologyTaskMap.unity
-    guid: 84eac07275302214ebd58cc0a1cfb0b2
-  - enabled: 1
-    path: Assets/Scenes/mainMap.unity
-    guid: 347666ab375209c4db5b5847ba8ea26c
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    path: Assets/Scenes/geographyMap.unity
+    guid: e009aea66a342ee49922d865e2220aef
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
