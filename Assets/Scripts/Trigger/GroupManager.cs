@@ -8,6 +8,8 @@ public class GroupManager : MonoBehaviour
     [SerializeField] private GameObject objectToDeactivate;
     [SerializeField] private GameObject objectToShowInChest;
 
+     [SerializeField] private GameObject goBackTrigger;
+
     private bool groupCompleted = false;
 
     private void Update()
@@ -41,5 +43,8 @@ public class GroupManager : MonoBehaviour
 
         if (objectToShowInChest != null)
             objectToShowInChest.SetActive(true);
+
+        if (goBackTrigger != null)
+            goBackTrigger.SetActive(true);
     }
 }
