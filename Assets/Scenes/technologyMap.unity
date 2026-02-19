@@ -3256,7 +3256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &861217763
 Transform:
   m_ObjectHideFlags: 0
@@ -3294,6 +3294,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 626484790}
   objectToDeactivate: {fileID: 1767750179}
   objectToShowInChest: {fileID: 797329674}
+  goBackTrigger: {fileID: 1374481076}
 --- !u!1 &864414117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,7 +4992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1374481077
 Transform:
   m_ObjectHideFlags: 0
