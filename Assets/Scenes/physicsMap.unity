@@ -937,6 +937,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: physics-map
       objectReference: {fileID: 0}
+    - target: {fileID: 3881992704548618285, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -947,9 +951,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -241861608055726361, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 760624744}
-    - targetCorrespondingSourceObject: {fileID: -346642047233286542, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1361831635}
     - targetCorrespondingSourceObject: {fileID: 9208135887483320983, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
       insertIndex: -1
       addedObject: {fileID: 102680463}
@@ -1142,33 +1143,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 591305785420998257, guid: 9f6cee6268aadb643b2945fddfd3139b, type: 3}
---- !u!1 &1361831633 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -346642047233286542, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
-  m_PrefabInstance: {fileID: 584703685}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1361831635
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361831633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8234954865023109096, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
 --- !u!1 &1383416038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -674449036139524865, guid: 983e6ccd48c917e42a2c704c04680bde, type: 3}
