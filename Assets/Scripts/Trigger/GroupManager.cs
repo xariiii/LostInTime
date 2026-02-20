@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GroupManager : MonoBehaviour
 {
-    [SerializeField] private DragManager[] dragManagers; // drag manager in group manager
+    [SerializeField] private DragManager[] dragManagers;
 
-    [SerializeField] private GameObject objectToActivate; // what happens after task is done
+    [SerializeField] private GameObject objectToActivate;
     [SerializeField] private GameObject objectToDeactivate;
     [SerializeField] private GameObject objectToShowInChest;
 
-     [SerializeField] private GameObject goBackTrigger;
+    [SerializeField] private GameObject goBackTrigger;
 
     private bool groupCompleted = false;
 
@@ -33,7 +33,7 @@ public class GroupManager : MonoBehaviour
 
     private void OnGroupCompleted()
     {
-        Debug.Log("All task have been done!");
+        Debug.Log("All tasks have been done!");
 
         if (objectToActivate != null)
             objectToActivate.SetActive(true);
