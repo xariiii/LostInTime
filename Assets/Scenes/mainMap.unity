@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: medicineMap
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!1001 &68028780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: technologyMap
-  playerPrefab: {fileID: 441227422214093790}
+  playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!4 &421633620
 Transform:
   m_ObjectHideFlags: 0
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: biologyMap
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!1001 &1259562948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: physicsMap
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!1001 &2040966682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1718,11 +1718,6 @@ PrefabInstance:
 --- !u!4 &441227422214093789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1116816550888195348, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
-  m_PrefabInstance: {fileID: 441227422214093788}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &441227422214093790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
   m_PrefabInstance: {fileID: 441227422214093788}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
