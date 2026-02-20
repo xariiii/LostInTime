@@ -201,7 +201,7 @@ public class MainMenuEvents : MonoBehaviour
         HidePanel(SettingsVisual);
         HidePanel(PauseMenuPanel);
 
-        SceneManager.LoadScene("mainMap");
+        SceneManager.LoadScene("geographyMap");
     }
 
 
@@ -233,7 +233,7 @@ public class MainMenuEvents : MonoBehaviour
     }
 private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
-    if (scene.name == "mainMap")
+    if (scene.name == "geographyMap")
     {
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
