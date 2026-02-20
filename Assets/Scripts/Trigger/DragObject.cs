@@ -6,15 +6,25 @@ public class DragObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 {
     private DragManager _manager;
     public BlockType blockType;
+
     public bool locked = false;
 
     private Vector2 _centerPoint;
     private Vector2 _worldCenterPoint => transform.TransformPoint(_centerPoint);
 
+    private Vector3 _startPosition;
+
     private void Awake()
     {
         _manager = GetComponentInParent<DragManager>();
         _centerPoint = (transform as RectTransform).rect.center;
+        _startPosition = transform.position;
+    }
+
+    public void ResetToStart()
+    {
+        transform.position = _startPosition;
+        locked = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -36,6 +46,6 @@ public class DragObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         _manager.UnregisterDraggedObject(this);
-        _manager.DetectIfInZone(this);
+        _manager.CheckIfAllZonesFilled();
     }
 }
