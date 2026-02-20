@@ -194,12 +194,16 @@ public class MainMenuEvents : MonoBehaviour
     {
         Debug.Log("You pressed the Start Button");
 
-        Time.timeScale = 1f;
         isPaused = false;
+        Time.timeScale = 1f;
+
         HidePanel(MainMenuVisual);
+        HidePanel(SettingsVisual);
+        HidePanel(PauseMenuPanel);
 
         SceneManager.LoadScene("mainMap");
     }
+
 
     private void OnGoToMainMenuClick(ClickEvent evt)
     {
@@ -238,22 +242,23 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
             Debug.Log("Player instantiated after scene load.");
         }
 
+        // Game MUST NOT start paused
+        Time.timeScale = 1f;
+        isPaused = false;
+
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
-        Time.timeScale = 0f;
 
         var controller = player.GetComponent<Artemis.FPController>();
         if (controller != null)
-        {
             controller.ResumeController();
-        }
-
 
         HidePanel(MainMenuVisual);
         HidePanel(SettingsVisual);
         HidePanel(PauseMenuPanel);
     }
 }
+
 
     private void HidePanel(VisualElement panel)
     {
