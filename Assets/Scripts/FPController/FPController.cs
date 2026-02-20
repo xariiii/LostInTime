@@ -22,33 +22,17 @@ namespace Artemis
         [Tooltip("This is how high the character can jump")]
         [SerializeField] float JumpHeight = 20f;
 
-        private int timesJumped = 0;
-
-        [SerializeField] bool CanDoubleJump = true;
-
-        public bool Sprinting
-        {
-            get
-            {
-                return SprintInput && CurrentSpeed > 0.1f;
-            }
-        }
+        public bool Sprinting => SprintInput && CurrentSpeed > 0.1f;
 
         [Header("Looking Parameters")]
         public Vector2 LookSensitivity = new Vector2(1f, 1f);
-
         public float PitchLimit = 85f;
 
         [SerializeField] float currentPitch = 0f;
-
         public float CurrentPitch
         {
             get => currentPitch;
-
-            set
-            {
-                currentPitch = Mathf.Clamp(value, -PitchLimit, PitchLimit);
-            }
+            set => currentPitch = Mathf.Clamp(value, -PitchLimit, PitchLimit);
         }
 
         [Header("Camera Parameters")]
@@ -56,15 +40,9 @@ namespace Artemis
         [SerializeField] float CameraSprintFOV = 80f;
         [SerializeField] float CameraFOVSmoothing = 1f;
 
-        float TargetCameraFOV
-        {
-            get
-            {
-                return Sprinting ? CameraSprintFOV : CameraNormalFOV;
-            }
-        }
+        float TargetCameraFOV => Sprinting ? CameraSprintFOV : CameraNormalFOV;
 
-        [Header("Phycics Parameters")]
+        [Header("Physics Parameters")]
         [SerializeField] float GravityScale = 3f;
 
         public float VerticalVelocity = 0f;
@@ -73,7 +51,6 @@ namespace Artemis
         public float CurrentSpeed { get; private set; }
 
         private bool wasGrounded = false;
-
         public bool IsGrounded => characterController.isGrounded;
 
         [Header("Input")]
@@ -88,8 +65,6 @@ namespace Artemis
         [Header("Events")]
         public UnityEvent Landed;
 
-        #region Unity Methods
-
         void Awake()
         {
             characterController = GetComponent<CharacterController>();
@@ -101,57 +76,36 @@ namespace Artemis
         void OnValidate()
         {
             if (characterController == null)
-            {
                 characterController = GetComponent<CharacterController>();
-            }
-
         }
 
         void Update()
         {
             if (IsPaused) return;
 
-            // 🔹 Pobieranie inputu
             MoveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             LookInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             SprintInput = Input.GetKey(KeyCode.LeftShift);
 
-            // 🔹 Ruch, kamera, itd.
             MoveUpdate();
             LookUpdate();
             CameraUpdate();
 
             if (!wasGrounded && IsGrounded)
-            {
-                timesJumped = 0;
                 Landed?.Invoke();
-            }
 
             wasGrounded = IsGrounded;
         }
 
-
-        #endregion
-
-        #region Controller Methods
-
+        // -------------------------
+        // SINGLE JUMP ONLY
+        // -------------------------
         public void TryJump()
         {
-            if (IsGrounded == false)
-            {
-                if (CanDoubleJump && timesJumped < 2 && VerticalVelocity > 0.01f)
-                {
-                    return;
-                }
-                if (!CanDoubleJump || timesJumped >= 2)
-                {
-                    return;
-                }
-            }
+            if (!IsGrounded)
+                return;
 
             VerticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y * GravityScale);
-
-            timesJumped++;
         }
 
         void MoveUpdate()
@@ -161,32 +115,21 @@ namespace Artemis
             motion.Normalize();
 
             if (motion.sqrMagnitude >= 0.01f)
-            {
                 CurrentVelocity = Vector3.MoveTowards(CurrentVelocity, motion * MaxSpeed, Acceleration * Time.deltaTime);
-
-            }
             else
-            {
                 CurrentVelocity = Vector3.MoveTowards(CurrentVelocity, Vector3.zero, Acceleration * Time.deltaTime);
-            }
 
             if (IsGrounded && VerticalVelocity <= 0.01f)
-            {
                 VerticalVelocity = -3f;
-            }
             else
-            {
                 VerticalVelocity += Physics.gravity.y * 20f * Time.deltaTime;
-            }
 
             Vector3 fullVelocity = new Vector3(CurrentVelocity.x, VerticalVelocity, CurrentVelocity.z);
 
             CollisionFlags flags = characterController.Move(fullVelocity * Time.deltaTime);
 
             if ((flags & CollisionFlags.Above) != 0 && VerticalVelocity > 0.01f)
-            {
                 VerticalVelocity = 0f;
-            }
 
             CurrentSpeed = CurrentVelocity.magnitude;
         }
@@ -197,25 +140,17 @@ namespace Artemis
             CurrentPitch -= input.y;
 
             fpCamera.transform.localRotation = Quaternion.Euler(CurrentPitch, 0f, 0f);
-
             transform.Rotate(Vector3.up * input.x);
         }
 
         void CameraUpdate()
         {
-            float targetFOV = CameraNormalFOV;
+            float targetFOV = Sprinting
+                ? Mathf.Lerp(CameraNormalFOV, CameraSprintFOV, CurrentSpeed / SprintSpeed)
+                : CameraNormalFOV;
 
-            if (Sprinting)
-            {
-                float speedRatio = CurrentSpeed / SprintSpeed;
-
-                targetFOV = Mathf.Lerp(CameraNormalFOV, CameraSprintFOV, speedRatio);
-            }
             fpCamera.Lens.FieldOfView = Mathf.Lerp(fpCamera.Lens.FieldOfView, targetFOV, CameraFOVSmoothing * Time.deltaTime);
-
         }
-
-        #endregion
 
         public void PauseController()
         {
@@ -231,5 +166,4 @@ namespace Artemis
             Cursor.visible = false;
         }
     }
-    
 }
