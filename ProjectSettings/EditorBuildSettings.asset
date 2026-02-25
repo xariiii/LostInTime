@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/technologyMap.unity
-    guid: b28e5544227db944bb0e868471c26a2a
-  - enabled: 1
     path: Assets/Scenes/mainMenu.unity
     guid: eb945904923aa9646b940427f512f008
   - enabled: 1
     path: Assets/Scenes/mainMap.unity
     guid: b12c0f756a827104c9872f481de9843a
-  - enabled: 0
-    path: Assets/Scenes/chemistryTaskMap.unity
-    guid: 712ec15150216d34989268a6eb75ece4
+  - enabled: 1
+    path: Assets/Scenes/technologyMap.unity
+    guid: b28e5544227db944bb0e868471c26a2a
   - enabled: 1
     path: Assets/Scenes/biologyTaskMap.unity
     guid: 2c8e0109c6ec84247a4e933cd5c38f23
   - enabled: 1
     path: Assets/Scenes/geographyMap.unity
     guid: e009aea66a342ee49922d865e2220aef
+  - enabled: 1
+    path: Assets/Scenes/mazeMap.unity
+    guid: 58bb9e60c8a49e842af48c89f15b5373
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
