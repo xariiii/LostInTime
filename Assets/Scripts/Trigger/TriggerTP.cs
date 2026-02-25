@@ -40,7 +40,7 @@ public class TriggerTP : MonoBehaviour
         }
 
         // -----------------------------
-        // 1. TELEPORTACJA PO NAZWIE
+        // TELEPORTACJA PO NAZWIE
         // -----------------------------
         GameObject spawnByName = null;
 
@@ -49,20 +49,18 @@ public class TriggerTP : MonoBehaviour
 
         if (spawnByName != null)
         {
-            // USTAWIAMY TYLKO POZYCJĘ
-            // NIE ruszamy rotacji — FPController sam ją ustawi
             player.transform.position = spawnByName.transform.position;
             return;
         }
 
         // -----------------------------
-        // 2. FALLBACK: SpawnPoint po tagu
+        // 2SpawnPoint po tagu
         // -----------------------------
         GameObject spawn = GameObject.FindWithTag("SpawnPoint");
         if (spawn != null)
         {
             player.transform.position = spawn.transform.position;
-            // rotacji też nie ruszamy
+
         }
     }
 }
