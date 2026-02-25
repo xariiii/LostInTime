@@ -3673,7 +3673,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 626484790}
   objectToDeactivate: {fileID: 1767750179}
   objectToShowInChest: {fileID: 797329674}
-  goBackTrigger: {fileID: 919132149155446097, guid: 00ecab16968b08f4685e4463b7e58afa, type: 3}
+  goBackTrigger: {fileID: 1374481076}
 --- !u!1 &864414117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,7 +6355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   takePrompt: {fileID: 51061956}
-  nextTrigger: {fileID: 1374481076}
+  isCombinedItem: 0
+  questManager: {fileID: 0}
 --- !u!65 &1720610973
 BoxCollider:
   m_ObjectHideFlags: 0
