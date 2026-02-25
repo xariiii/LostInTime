@@ -855,6 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: mainMap
+  spawnID: SpawnGeo
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!65 &823487116
 BoxCollider:

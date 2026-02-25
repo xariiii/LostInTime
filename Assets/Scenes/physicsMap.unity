@@ -916,7 +916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 360743938}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnPhyMap
   m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2624,6 +2624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: mainMap
+  spawnID: SpawnPhy
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!65 &1806258851
 BoxCollider:

@@ -1195,7 +1195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320223053}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnTechMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1209,13 +1209,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320223052}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.96399325, z: -0, w: 0.26592693}
-  m_LocalPosition: {x: 5.7200003, y: 1, z: 16.394892}
+  m_LocalRotation: {x: -0, y: 0.9996448, z: -0, w: -0.026651079}
+  m_LocalPosition: {x: 13.01, y: 1, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 149.156, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 183.054, z: 0}
 --- !u!1 &326121824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6443852219947562045, guid: f0177053b2204704083fdf6c477a316e, type: 3}
@@ -5646,6 +5646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerTP
   sceneToLoad: mainMap
+  spawnID: SpawnTech
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
 --- !u!65 &1374481079
 BoxCollider:
@@ -6355,7 +6356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   takePrompt: {fileID: 51061956}
-  nextTrigger: {fileID: 1374481076}
+  isCombinedItem: 0
+  questManager: {fileID: 0}
 --- !u!65 &1720610973
 BoxCollider:
   m_ObjectHideFlags: 0
