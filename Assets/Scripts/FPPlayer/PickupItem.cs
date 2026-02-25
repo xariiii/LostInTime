@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PickupItem : MonoBehaviour
 {
-    [SerializeField] private GameObject takePrompt;     // UI text "Take"
-    [SerializeField] private GameObject nextTrigger;    // Trigger that appears after pickup
+    [SerializeField] private GameObject takePrompt;
+
+    public bool isCombinedItem = false;
+    [SerializeField] private QuestManager questManager;
 
     private bool pickedUp = false;
 
@@ -11,9 +13,6 @@ public class PickupItem : MonoBehaviour
     {
         if (takePrompt != null)
             takePrompt.SetActive(false);
-
-        if (nextTrigger != null)
-            nextTrigger.SetActive(false);
     }
 
     public void ShowPrompt(bool show)
@@ -29,9 +28,16 @@ public class PickupItem : MonoBehaviour
         if (takePrompt != null)
             takePrompt.SetActive(false);
 
-        gameObject.SetActive(false); // Hide the item
+        PlayerHoldItem.Instance.HoldItem(this);
 
-        if (nextTrigger != null)
-            nextTrigger.SetActive(true); // Unlock next area
+        if (isCombinedItem)
+        {
+            questManager.CombinedItemPickedUp();
+        }
+    }
+
+    public void OnPlaced()
+    {
+        pickedUp = false;
     }
 }
