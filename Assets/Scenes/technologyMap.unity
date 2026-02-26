@@ -3674,6 +3674,7 @@ MonoBehaviour:
   objectToDeactivate: {fileID: 1767750179}
   objectToShowInChest: {fileID: 797329674}
   goBackTrigger: {fileID: 1374481076}
+  requiredTasks: 3
 --- !u!1 &864414117
 GameObject:
   m_ObjectHideFlags: 0
