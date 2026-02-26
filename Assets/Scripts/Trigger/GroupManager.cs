@@ -10,30 +10,36 @@ public class GroupManager : MonoBehaviour
 
     [SerializeField] private GameObject goBackTrigger;
 
+    [Header("How many tasks must be completed?")]
+    [SerializeField] private int requiredTasks = 1;
+
     private bool groupCompleted = false;
 
     private void Update()
     {
-        if (!groupCompleted && AreAllManagersCompleted())
+        if (!groupCompleted && AreRequiredManagersCompleted())
         {
             groupCompleted = true;
             OnGroupCompleted();
         }
     }
 
-    private bool AreAllManagersCompleted()
+    private bool AreRequiredManagersCompleted()
     {
+        int completed = 0;
+
         foreach (var manager in dragManagers)
         {
-            if (!manager.IsCompleted)
-                return false;
+            if (manager.IsCompleted)
+                completed++;
         }
-        return true;
+
+        return completed >= requiredTasks;
     }
 
     private void OnGroupCompleted()
     {
-        Debug.Log("All tasks have been done!");
+        Debug.Log("Required number of tasks completed!");
 
         if (objectToActivate != null)
             objectToActivate.SetActive(true);
