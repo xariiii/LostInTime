@@ -926,11 +926,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5289a373-af61-4713-852a-9970ed2d0d1e
+  cloudProjectId: 933d8b09-13d3-4f9e-832f-bd7aee561d79
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: playerSystem
-  organizationId: xecl1pse
+  organizationId: kamaxpl
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
