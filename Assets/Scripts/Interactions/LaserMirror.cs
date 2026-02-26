@@ -9,7 +9,7 @@ public class LaserMirror : MonoBehaviour
     void Update()
     {
         Vector3 origin = transform.position;
-        Vector3 direction = transform.forward;
+        Vector3 direction = transform.up;
 
         line.positionCount = 1;
         line.SetPosition(0, origin);
