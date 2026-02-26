@@ -7,6 +7,9 @@ public class PickupItem : MonoBehaviour
     public bool isCombinedItem = false;
     [SerializeField] private QuestManager questManager;
 
+    // 🔥 DODANE — identyfikator przedmiotu
+    public string itemId = "";
+
     private bool pickedUp = false;
 
     private void Start()
