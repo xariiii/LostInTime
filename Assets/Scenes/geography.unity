@@ -1320,7 +1320,7 @@ Transform:
   m_GameObject: {fileID: 576767001}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2822,6 +2822,7 @@ MonoBehaviour:
   takePrompt: {fileID: 2028641676}
   isCombinedItem: 0
   questManager: {fileID: 0}
+  itemId: 
 --- !u!65 &1373081315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3317,6 +3318,7 @@ MonoBehaviour:
   takePrompt: {fileID: 1144722492}
   isCombinedItem: 0
   questManager: {fileID: 0}
+  itemId: 
 --- !u!4 &1625726016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b359209fcd0684242baba5a51d982b05, type: 3}
@@ -3621,6 +3623,7 @@ MonoBehaviour:
   takePrompt: {fileID: 1757102098}
   isCombinedItem: 1
   questManager: {fileID: 732761361}
+  itemId: 
 --- !u!65 &1831519904
 BoxCollider:
   m_ObjectHideFlags: 0

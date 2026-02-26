@@ -2776,6 +2776,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1116816550888195348, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1928631417}
+    - targetCorrespondingSourceObject: {fileID: 1116816550888195348, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1813563682}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
       insertIndex: -1
@@ -6525,27 +6528,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f87e9bb1c27d3a41801054d4ca17e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPickup
---- !u!65 &1679121643
-BoxCollider:
+--- !u!114 &1679121643
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727668182}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20, y: 20, z: 20}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a5a7185a87d7842a11ea1646bff0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHoldItem
+  heldItem: {fileID: 0}
+  holdPoint: {fileID: 1813563682}
 --- !u!4 &1720610971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fb41afa90a33e8419d23e680a30b430, type: 3}
@@ -6566,6 +6562,7 @@ MonoBehaviour:
   takePrompt: {fileID: 51061956}
   isCombinedItem: 0
   questManager: {fileID: 0}
+  itemId: 
 --- !u!65 &1720610973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7005,6 +7002,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 5fb41afa90a33e8419d23e680a30b430, type: 3}
+--- !u!1 &1813563681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1813563682}
+  m_Layer: 0
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1813563682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813563681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1679121637}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836487593
 GameObject:
   m_ObjectHideFlags: 0
