@@ -3196,7 +3196,7 @@ MonoBehaviour:
     brakuj\u0105ce elementy: bateri\u0119, lampk\u0119 oraz amperomierz. Po\u0142\u0105cz
     je w poprawnej kolejno\u015Bci:\n\nbateria \u2192 lampka \u2192 amperomierz"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0d33af56f87f4f94ab0317c1947c0635, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4235,7 +4235,7 @@ MonoBehaviour:
     Po\u0142\u0105cz je w poprawnej kolejno\u015Bci:\n\nbateria \u2192 wy\u0142\u0105cznik
     \u2192 lampka"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0d33af56f87f4f94ab0317c1947c0635, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5079,7 +5079,7 @@ MonoBehaviour:
     Po\u0142\u0105cz je w poprawnej kolejno\u015Bci:\n\nbateria \u2192 prze\u0142\u0105cznik
     \u2192 woltomierz"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0d33af56f87f4f94ab0317c1947c0635, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
