@@ -2166,6 +2166,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &410988770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410988771}
+  m_Layer: 0
+  m_Name: FakeTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410988771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410988770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.56608, y: 2.52839, z: 55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417912271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,7 +3859,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 626484790}
   objectToDeactivate: {fileID: 1767750179}
   objectToShowInChest: {fileID: 797329674}
-  goBackTrigger: {fileID: 1374481076}
+  goBackTrigger: {fileID: 410988770}
   requiredTasks: 3
 --- !u!1 &864414117
 GameObject:
@@ -5812,7 +5843,7 @@ GameObject:
   - component: {fileID: 1374481079}
   - component: {fileID: 1374481078}
   m_Layer: 0
-  m_Name: tp
+  m_Name: ExitTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6580,6 +6611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHoldItem
   heldItem: {fileID: 0}
   holdPoint: {fileID: 1813563682}
+  specificItem: {fileID: 1720610972}
+  enableForSpecific: {fileID: 1374481076}
 --- !u!4 &1720610971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fb41afa90a33e8419d23e680a30b430, type: 3}
@@ -8593,3 +8626,4 @@ SceneRoots:
   - {fileID: 1979235836}
   - {fileID: 564666166}
   - {fileID: 1037011692}
+  - {fileID: 410988771}
