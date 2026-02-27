@@ -2326,7 +2326,7 @@ MonoBehaviour:
   activated: 0
   targetRenderer: {fileID: 2105543478}
   activatedMaterial: {fileID: 2100000, guid: aca922792781e104ab411ed3c17e0230, type: 2}
-  defaultMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: d8f0999b450dacb4fae4126c2547a601, type: 2}
 --- !u!23 &449439052
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2416,7 +2416,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.6, z: 1}
+  m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &466935817 stripped
 GameObject:
@@ -7776,7 +7776,7 @@ MonoBehaviour:
   activated: 0
   targetRenderer: {fileID: 1907075555}
   activatedMaterial: {fileID: 2100000, guid: 58c0419d9e918094b9e33912f5a605b6, type: 2}
-  defaultMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: 39c7cdae9d4703041bda92ee304bd792, type: 2}
 --- !u!23 &1903481636
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7866,7 +7866,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.6, z: 1}
+  m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1907075549 stripped
 GameObject:
@@ -8954,7 +8954,7 @@ MonoBehaviour:
   activated: 0
   targetRenderer: {fileID: 1428469931}
   activatedMaterial: {fileID: 2100000, guid: e6354d696820c6247885b596ce308a42, type: 2}
-  defaultMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: 08e6f4104014a184d9168c9c3100d628, type: 2}
 --- !u!65 &2101184600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8974,7 +8974,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.6, z: 1}
+  m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2104730077
 GameObject:
