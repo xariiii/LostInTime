@@ -1,10 +1,10 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=11006eaa04c46354db8b2406d0ed6b11&amp;type=3#MainMenuStyle" />
     <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1; background-color: rgb(52, 51, 70); display: flex; background-image: url(&quot;project://database/Assets/TextMesh%20Pro/ShinyWaffleBg.png?fileID=2800000&amp;guid=ecf8d3631236fbc45bb25ce52b2f72ef&amp;type=3#ShinyWaffleBg&quot;);">
-        <ui:Label text="Lost in Time" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px;" />
-        <ui:Button text="Rozpocznij&#10;" name="StartGameButton" class="button" />
-        <ui:Button text="Ustawienia" name="SettingsButton" class="button" />
-        <ui:Button text="wyjscie&#10;" name="QuitButton" class="button" />
+        <ui:Label text="Lost in Time" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Rozpocznij&#10;" name="StartGameButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Ustawienia" name="SettingsButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Wyjście&#10;" name="QuitButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
     </ui:VisualElement>
     <ui:VisualElement name="SettingsPanel" style="flex-grow: 1; display: none; position: relative; background-color: rgb(52, 51, 70); top: 0; left: 0; height: 1080px; width: 1920px; right: 0; bottom: 0; align-items: center; justify-content: flex-start; align-self: center; visibility: visible;">
         <ui:Label text="USTAWIENIA" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; display: flex;" />
