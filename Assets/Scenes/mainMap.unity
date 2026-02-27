@@ -979,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 565306611}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7057611, y: 0.043603696, z: -0.043603696, w: 0.70576113}
-  m_LocalPosition: {x: -8.167152, y: 63.8, z: -30.6}
+  m_LocalPosition: {x: -8.167152, y: 34.4, z: -30.6}
   m_LocalScale: {x: 23.475145, y: 23.475145, z: 1.1148052}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2591,6 +2591,10 @@ MonoBehaviour:
   holdPoint: {fileID: 2085329286}
   specificItem: {fileID: 0}
   enableForSpecific: {fileID: 0}
+  engineItem: {fileID: 0}
+  fireExtItem: {fileID: 0}
+  fuelItem: {fileID: 0}
+  hammerItem: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2612,4 +2616,3 @@ SceneRoots:
   - {fileID: 1054230236}
   - {fileID: 1092230824}
   - {fileID: 1962942139}
-  - {fileID: 1345654326}
