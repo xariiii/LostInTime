@@ -18,8 +18,8 @@
     </ui:VisualElement>
     <ui:VisualElement name="PauseMenuPanel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.59); display: none;">
         <ui:Label text="Gra zatrzymana" name="Header" class="header" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
-        <ui:Button text="Wroc do rozgrywki&#10;" name="ResumeButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Wróć do rozgrywki&#10;" name="ResumeButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
         <ui:Button text="Ustawienia&#10;" name="PauseSettingsButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
-        <ui:Button text="Wyjscie do menu&#10;" name="PauseQuitButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Wyjście do menu&#10;" name="PauseQuitButton" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
     </ui:VisualElement>
 </ui:UXML>
