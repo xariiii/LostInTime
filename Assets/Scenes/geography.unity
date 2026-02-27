@@ -4244,6 +4244,10 @@ MonoBehaviour:
   holdPoint: {fileID: 576767002}
   specificItem: {fileID: 1831519903}
   enableForSpecific: {fileID: 861047039}
+  engineItem: {fileID: 0}
+  fireExtItem: {fileID: 0}
+  fuelItem: {fileID: 0}
+  hammerItem: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -6613,6 +6613,10 @@ MonoBehaviour:
   holdPoint: {fileID: 1813563682}
   specificItem: {fileID: 1720610972}
   enableForSpecific: {fileID: 1374481076}
+  engineItem: {fileID: 0}
+  fireExtItem: {fileID: 0}
+  fuelItem: {fileID: 1720610972}
+  hammerItem: {fileID: 0}
 --- !u!4 &1720610971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fb41afa90a33e8419d23e680a30b430, type: 3}
@@ -7125,7 +7129,7 @@ Transform:
   m_GameObject: {fileID: 1813563681}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

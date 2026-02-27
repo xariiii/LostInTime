@@ -6830,6 +6830,10 @@ MonoBehaviour:
   holdPoint: {fileID: 2093158063}
   specificItem: {fileID: 1004735809}
   enableForSpecific: {fileID: 1692915555}
+  engineItem: {fileID: 1004735809}
+  fireExtItem: {fileID: 0}
+  fuelItem: {fileID: 0}
+  hammerItem: {fileID: 0}
 --- !u!65 &1275253944
 BoxCollider:
   m_ObjectHideFlags: 0

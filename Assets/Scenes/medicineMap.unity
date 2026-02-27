@@ -4329,7 +4329,7 @@ GameObject:
   - component: {fileID: 1456464060}
   - component: {fileID: 1456464059}
   m_Layer: 0
-  m_Name: tp
+  m_Name: ExitTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6971,6 +6971,10 @@ MonoBehaviour:
   holdPoint: {fileID: 475380169}
   specificItem: {fileID: 2031204814}
   enableForSpecific: {fileID: 1456464057}
+  engineItem: {fileID: 0}
+  fireExtItem: {fileID: 2031204814}
+  fuelItem: {fileID: 0}
+  hammerItem: {fileID: 0}
 --- !u!114 &441227422214093795
 MonoBehaviour:
   m_ObjectHideFlags: 0

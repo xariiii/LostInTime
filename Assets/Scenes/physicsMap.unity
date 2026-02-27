@@ -2320,9 +2320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   activated: 0
-  targetRenderer: {fileID: 0}
-  activatedColor: {r: 1, g: 0, b: 0, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  targetRenderer: {fileID: 2105543478}
+  activatedMaterial: {fileID: 2100000, guid: aca922792781e104ab411ed3c17e0230, type: 2}
+  defaultMaterial: {fileID: 0}
 --- !u!23 &449439052
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5545,6 +5545,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 11e19501453bea34ab95355dbcfa4777, type: 3}
+--- !u!23 &1428469931 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 11e19501453bea34ab95355dbcfa4777, type: 3}
+  m_PrefabInstance: {fileID: 38019291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1437292104
 GameObject:
   m_ObjectHideFlags: 0
@@ -7446,8 +7451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   activated: 0
   targetRenderer: {fileID: 0}
-  activatedColor: {r: 1, g: 0, b: 0, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  activatedMaterial: {fileID: 0}
+  defaultMaterial: {fileID: 0}
 --- !u!65 &1895129124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7590,9 +7595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   activated: 0
-  targetRenderer: {fileID: 0}
-  activatedColor: {r: 1, g: 0, b: 0, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  targetRenderer: {fileID: 1907075555}
+  activatedMaterial: {fileID: 2100000, guid: 58c0419d9e918094b9e33912f5a605b6, type: 2}
+  defaultMaterial: {fileID: 0}
 --- !u!23 &1903481636
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7711,6 +7716,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: e5891d5a0064605469cc245dd4024cd7, type: 3}
+--- !u!23 &1907075555 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: e5891d5a0064605469cc245dd4024cd7, type: 3}
+  m_PrefabInstance: {fileID: 805517843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1926135082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: fdfa6d2dd04c1b140a81ae9958eb5cc2, type: 3}
@@ -8762,9 +8772,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserDetector
   activated: 0
-  targetRenderer: {fileID: 0}
-  activatedColor: {r: 0.034784317, g: 1, b: 0, a: 1}
-  defaultColor: {r: 0.35263884, g: 0.9150943, b: 0.33236915, a: 1}
+  targetRenderer: {fileID: 1428469931}
+  activatedMaterial: {fileID: 2100000, guid: e6354d696820c6247885b596ce308a42, type: 2}
+  defaultMaterial: {fileID: 0}
 --- !u!65 &2101184600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8848,6 +8858,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: fdfa6d2dd04c1b140a81ae9958eb5cc2, type: 3}
+--- !u!23 &2105543478 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: fdfa6d2dd04c1b140a81ae9958eb5cc2, type: 3}
+  m_PrefabInstance: {fileID: 354382668}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2120862884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c33728e037da9d4da5016e7eda0b540, type: 3}
@@ -9107,6 +9122,10 @@ MonoBehaviour:
   holdPoint: {fileID: 1203587350}
   specificItem: {fileID: 1633429577}
   enableForSpecific: {fileID: 1806258848}
+  engineItem: {fileID: 0}
+  fireExtItem: {fileID: 0}
+  fuelItem: {fileID: 0}
+  hammerItem: {fileID: 1633429577}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
