@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: laser-table-three
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: 011b325ff1d3b39498de122bc6f1824b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e6354d696820c6247885b596ce308a42, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1142,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: laser-table-two
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: 011b325ff1d3b39498de122bc6f1824b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: aca922792781e104ab411ed3c17e0230, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5010,6 +5018,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: 011b325ff1d3b39498de122bc6f1824b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 58c0419d9e918094b9e33912f5a605b6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
