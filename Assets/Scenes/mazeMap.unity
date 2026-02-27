@@ -1789,6 +1789,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHoldItem
   heldItem: {fileID: 0}
   holdPoint: {fileID: 1162852624}
+  specificItem: {fileID: 0}
+  enableForSpecific: {fileID: 0}
 --- !u!114 &441227422214093792
 MonoBehaviour:
   m_ObjectHideFlags: 0
