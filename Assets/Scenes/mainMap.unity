@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 47772515}
   - component: {fileID: 47772517}
   - component: {fileID: 47772516}
+  - component: {fileID: 47772518}
   m_Layer: 0
   m_Name: TPToMedicine
   m_TagString: Untagged
@@ -263,6 +264,19 @@ MonoBehaviour:
   sceneToLoad: medicineMap
   spawnID: SpawnMedMap
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
+--- !u!114 &47772518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47772514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a2e13e2e9db694a9ed00c72a669f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemTrigger
+  itemType: 1
 --- !u!1001 &68028780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -769,6 +783,7 @@ GameObject:
   - component: {fileID: 421633620}
   - component: {fileID: 421633619}
   - component: {fileID: 421633621}
+  - component: {fileID: 421633622}
   m_Layer: 0
   m_Name: TPToTechnology
   m_TagString: Untagged
@@ -827,6 +842,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &421633622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421633618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a2e13e2e9db694a9ed00c72a669f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemTrigger
+  itemType: 2
 --- !u!64 &547769608
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1203,6 +1231,7 @@ GameObject:
   - component: {fileID: 936390867}
   - component: {fileID: 936390869}
   - component: {fileID: 936390868}
+  - component: {fileID: 936390870}
   m_Layer: 0
   m_Name: TPToBiology
   m_TagString: Untagged
@@ -1261,6 +1290,19 @@ MonoBehaviour:
   sceneToLoad: biologyMap
   spawnID: SpawnBioMap
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
+--- !u!114 &936390870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936390866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a2e13e2e9db694a9ed00c72a669f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemTrigger
+  itemType: 0
 --- !u!1 &1054230235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2123,7 @@ GameObject:
   - component: {fileID: 1567952859}
   - component: {fileID: 1567952861}
   - component: {fileID: 1567952860}
+  - component: {fileID: 1567952862}
   m_Layer: 0
   m_Name: TPToPhysics
   m_TagString: Untagged
@@ -2139,6 +2182,19 @@ MonoBehaviour:
   sceneToLoad: physicsMap
   spawnID: SpawnPhyMap
   playerPrefab: {fileID: 5127654271460464031, guid: 56c00a24245ad0244a710ceb9a56a9af, type: 3}
+--- !u!114 &1567952862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567952858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a2e13e2e9db694a9ed00c72a669f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemTrigger
+  itemType: 3
 --- !u!1 &1853483815
 GameObject:
   m_ObjectHideFlags: 0
