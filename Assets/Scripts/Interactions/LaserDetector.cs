@@ -5,25 +5,38 @@ public class LaserDetector : MonoBehaviour
     public bool activated;
 
     [Header("Ustawienia materiałów")]
-    public Renderer targetRenderer;      // obiekt, którego materiał ma się zmieniać
-    public Material activatedMaterial;   // materiał po aktywacji
-    public Material defaultMaterial;     // materiał domyślny
+    public Renderer targetRenderer;
+    public Material activatedMaterial;
+    public Material defaultMaterial;
+
+    private bool laserOnThisFrame = false;
+
+    void Update()
+    {
+        // Jeśli laser NIE dotknął w tej klatce → reset
+        if (!laserOnThisFrame)
+        {
+            if (activated)
+            {
+                activated = false;
+                if (targetRenderer != null && defaultMaterial != null)
+                    targetRenderer.material = defaultMaterial;
+            }
+        }
+
+        // Reset flagi na kolejną klatkę
+        laserOnThisFrame = false;
+    }
 
     public void Hit()
     {
-        activated = true;
-        if (targetRenderer != null && activatedMaterial != null)
-        {
-            targetRenderer.material = activatedMaterial;
-        }
-    }
+        laserOnThisFrame = true;
 
-    public void ResetState()
-    {
-        activated = false;
-        if (targetRenderer != null && defaultMaterial != null)
+        if (!activated)
         {
-            targetRenderer.material = defaultMaterial;
+            activated = true;
+            if (targetRenderer != null && activatedMaterial != null)
+                targetRenderer.material = activatedMaterial;
         }
     }
 }
