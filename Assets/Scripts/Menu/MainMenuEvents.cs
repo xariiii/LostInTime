@@ -201,7 +201,7 @@ public class MainMenuEvents : MonoBehaviour
         HidePanel(SettingsVisual);
         HidePanel(PauseMenuPanel);
 
-        SceneManager.LoadScene("geography");
+        SceneManager.LoadScene("geographyMap");
     }
 
 

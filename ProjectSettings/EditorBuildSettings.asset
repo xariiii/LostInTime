@@ -21,13 +21,13 @@ EditorBuildSettings:
     path: Assets/Scenes/mazeMap.unity
     guid: 58bb9e60c8a49e842af48c89f15b5373
   - enabled: 1
-    path: Assets/Scenes/geographyMap.unity
-    guid: e4054415ab1cbc447b82c8ab744dbffb
-  - enabled: 1
     path: Assets/Scenes/physicsMap.unity
     guid: 4ccf40c52a55e05419cf5cf1988b36bd
   - enabled: 1
     path: Assets/Scenes/medicineMap.unity
     guid: 8b34ebfbd3c3a3245b048fc92c9138fd
+  - enabled: 1
+    path: Assets/Scenes/geographyMap.unity
+    guid: e4054415ab1cbc447b82c8ab744dbffb
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
