@@ -8918,7 +8918,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Podejd\u017A do trzech stacji roboczych i wykonaj trzy obwody elektryczne.
-    \n\nOtw\xF3rz skrzynk\u0119, kt\xF3ra si\u0119 odblokuje, i zabierz z niej przedmiot
+    \n\nOtw\xF3rz skrzynk\u0119, kt\xF3ra si\u0119 odblokuje i zabierz z niej przedmiot
     uruchamiaj\u0105cy portal."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d33af56f87f4f94ab0317c1947c0635, type: 2}

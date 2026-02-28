@@ -8537,7 +8537,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Wykonaj dwie krzy\u017C\xF3wki genetyczne przy dw\xF3ch sto\u0142ach laboratoryjnych.
-    \n\nOtw\xF3rz skrzynk\u0119, kt\xF3ra si\u0119 odblokuje, i zabierz przedmiot
+    \n\nOtw\xF3rz skrzynk\u0119, kt\xF3ra si\u0119 odblokuje i zabierz przedmiot
     potrzebny do aktywacji portalu."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d33af56f87f4f94ab0317c1947c0635, type: 2}
