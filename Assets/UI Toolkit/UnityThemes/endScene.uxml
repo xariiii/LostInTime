@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=11006eaa04c46354db8b2406d0ed6b11&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="MainMenuPanel" style="flex-grow: 1; background-color: rgb(52, 51, 70); display: flex; background-image: url(&quot;project://database/Assets/TextMesh%20Pro/endScene-bg.jpg?fileID=2800000&amp;guid=af69eaddedb1a574f8524bbeecb53815&amp;type=3#endScene-bg&quot;);">
+        <ui:Label text="Lost in Time" name="Header" class="header" style="margin-top: 100px; margin-right: 100px; margin-bottom: 100px; margin-left: 100px; -unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+        <ui:Button text="Wyjście&#10;" name="QuitButtonEnd" class="button" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Fonts/SourGummy-Regular.ttf?fileID=12800000&amp;guid=acef9a701005a0348a4eaf85c51e0491&amp;type=3#SourGummy-Regular&quot;);" />
+    </ui:VisualElement>
+</ui:UXML>

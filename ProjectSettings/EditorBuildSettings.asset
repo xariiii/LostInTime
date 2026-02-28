@@ -29,8 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/geographyMap.unity
     guid: e4054415ab1cbc447b82c8ab744dbffb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/endScene.unity
-    guid: d0a645f3138d6c047ba8d076c312dc52
+    guid: 65c52cc00fed8e44c84ac9e8307e284e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
