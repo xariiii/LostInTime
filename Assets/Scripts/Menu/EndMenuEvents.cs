@@ -16,6 +16,10 @@ public class EndMenuEvents : MonoBehaviour
         var root = _document.rootVisualElement;
         _quitButtonEnd = root.Q<Button>("QuitButtonEnd");
 
+        // WŁĄCZENIE KURSORA – jawne wskazanie UnityEngine.Cursor
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
         if (_quitButtonEnd != null)
         {
             _quitButtonEnd.RegisterCallback<ClickEvent>(OnQuitGameClick);
