@@ -211,7 +211,27 @@ public class MainMenuEvents : MonoBehaviour
         HidePanel(SettingsVisual);
         HidePanel(PauseMenuPanel);
     }
-
+/*
+    public class OnQuitGameClick: MonoBehaviour
+    {
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
+        public void OnYes()
+        {
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
+        }
+        public void OnNo()
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    
     private void OnQuitGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Quit Button");
@@ -231,6 +251,7 @@ public class MainMenuEvents : MonoBehaviour
 #endif
         }
     }
+    */
 private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 {
     if (scene.name == "geographyMap")
