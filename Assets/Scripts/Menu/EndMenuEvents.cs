@@ -16,7 +16,7 @@ public class EndMenuEvents : MonoBehaviour
         var root = _document.rootVisualElement;
         _quitButtonEnd = root.Q<Button>("QuitButtonEnd");
 
-        // WŁĄCZENIE KURSORA – jawne wskazanie UnityEngine.Cursor
+        // Włączenie kursora
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
 
@@ -32,20 +32,12 @@ public class EndMenuEvents : MonoBehaviour
 
     private void OnQuitGameClick(ClickEvent evt)
     {
-        var result = System.Windows.Forms.MessageBox.Show(
-            "Czy na pewno chcesz wyjść?",
-            "Potwierdzenie",
-            System.Windows.Forms.MessageBoxButtons.YesNo,
-            System.Windows.Forms.MessageBoxIcon.Question
-        );
+        Debug.Log("Quit button pressed.");
 
-        if (result == System.Windows.Forms.DialogResult.Yes)
-        {
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+        Application.Quit();
 #endif
-        }
     }
 }
