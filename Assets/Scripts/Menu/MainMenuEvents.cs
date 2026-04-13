@@ -285,7 +285,7 @@ public class MainMenuEvents : MonoBehaviour
         }
 
         string quality = PlayerPrefs.GetString("Quality", "Średnia");
-        string resolution = PlayerPrefs.GetString("Resolution", "1920x1080");
+        string resolution = PlayerPrefs.GetString("Resolution", "800x600");
         int volume = PlayerPrefs.GetInt("Volume", 50);
 
         _qualityDropdown.value = quality;
