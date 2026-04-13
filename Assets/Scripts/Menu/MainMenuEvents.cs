@@ -64,7 +64,7 @@ public class MainMenuEvents : MonoBehaviour
 
         List<string> ResolutionOptions = new List<string> { "2560x1440", "1920x1080", "1600x900", "1366x768", "1280x720" };
         _resolutionDropdown.choices = ResolutionOptions;
-        _resolutionDropdown.value = ResolutionOptions[3]; // 1920 x 1080 set as default
+        _resolutionDropdown.value = ResolutionOptions[2]; // 1920 x 1080 set as default
 
         _qualityDropdown.RegisterValueChangedCallback(evt =>
         {
