@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Windows.Forms;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -204,82 +203,51 @@ public class MainMenuEvents : MonoBehaviour
         SceneManager.LoadScene("geographyMap");
     }
 
-
     private void OnGoToMainMenuClick(ClickEvent evt)
     {
         ShowPanel(MainMenuVisual);
         HidePanel(SettingsVisual);
         HidePanel(PauseMenuPanel);
     }
-/*
-    public class OnQuitGameClick: MonoBehaviour
-    {
-        public void Show()
-        {
-            gameObject.SetActive(true);
-        }
-        public void OnYes()
-        {
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
-            Application.Quit();
-    #endif
-        }
-        public void OnNo()
-        {
-            gameObject.SetActive(false);
-        }
-    }
-    
+
+    // Cross‑platform quit (works on Windows, Linux, macOS)
     private void OnQuitGameClick(ClickEvent evt)
     {
         Debug.Log("You pressed the Quit Button");
-        DialogResult result = System.Windows.Forms.MessageBox.Show(
-            "Czy na pewno chcesz wyjść?",
-            "Potwierdzenie",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
-        );
-
-        if (result == DialogResult.Yes)
-        {
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
-            UnityEngine.Application.Quit();
+        Application.Quit();
 #endif
-        }
     }
-    */
-private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-{
-    if (scene.name == "geographyMap")
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player == null)
+        if (scene.name == "geographyMap")
         {
-            player = Instantiate(playerPrefab);
-            Debug.Log("Player instantiated after scene load.");
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player == null)
+            {
+                player = Instantiate(playerPrefab);
+                Debug.Log("Player instantiated after scene load.");
+            }
+
+            // Game MUST NOT start paused
+            Time.timeScale = 1f;
+            isPaused = false;
+
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            UnityEngine.Cursor.visible = false;
+
+            var controller = player.GetComponent<Artemis.FPController>();
+            if (controller != null)
+                controller.ResumeController();
+
+            HidePanel(MainMenuVisual);
+            HidePanel(SettingsVisual);
+            HidePanel(PauseMenuPanel);
         }
-
-        // Game MUST NOT start paused
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        UnityEngine.Cursor.visible = false;
-
-        var controller = player.GetComponent<Artemis.FPController>();
-        if (controller != null)
-            controller.ResumeController();
-
-        HidePanel(MainMenuVisual);
-        HidePanel(SettingsVisual);
-        HidePanel(PauseMenuPanel);
     }
-}
-
 
     private void HidePanel(VisualElement panel)
     {
@@ -307,6 +275,7 @@ private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         PlayerPrefs.Save();
         Debug.Log("Preferences saved.");
     }
+
     public void LoadPrefs()
     {
         if (_volumeSlider == null)
